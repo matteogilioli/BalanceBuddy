@@ -16,6 +16,7 @@ public final class Main {
         bl.aggiungi(new VoceSpesa("Netflix", 14.99));
         bl.aggiungi(new VoceSpesa("Spesa", 50));
         bl.aggiungi(new VoceEntrata("Stipendio", 800));
+        bl.aggiungi(new VoceEntrata("Paghetta", 50.99));
 
         BudgetBuddyFrame f = new BudgetBuddyFrame(bl);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
