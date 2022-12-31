@@ -1,21 +1,21 @@
 import javax.swing.*;
 import gui.BudgetBuddyFrame;
-import logic.Bilancio;
-import logic.VoceEntrata;
-import logic.VoceSpesa;
+import logic.Balance;
+import logic.IncomeEntry;
+import logic.ExpenseEntry;
 
 
 public final class Main {
 
-    private static Bilancio bl;
+    private static Balance bl;
 
     public static void main(String[] args) {
-        bl = new Bilancio();
+        bl = new Balance();
 
         // Voci di esempio
-        bl.aggiungi(new VoceSpesa("Netflix", 14.99));
-        bl.aggiungi(new VoceSpesa("Spesa", 50));
-        bl.aggiungi(new VoceEntrata("Stipendio", 800));
+        bl.aggiungi(new ExpenseEntry("Netflix", 14.99));
+        bl.aggiungi(new ExpenseEntry("Spesa", 50));
+        bl.aggiungi(new IncomeEntry("Stipendio", 800));
 
         BudgetBuddyFrame f = new BudgetBuddyFrame(bl);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

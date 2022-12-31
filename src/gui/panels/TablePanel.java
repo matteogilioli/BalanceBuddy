@@ -1,6 +1,6 @@
 package gui.panels;
 
-import logic.VoceBilancio;
+import logic.BalanceEntry;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -8,16 +8,16 @@ import java.awt.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class BudgetTablePanel extends JPanel {
+public class TablePanel extends JPanel {
     private final BudgetTableModel tableModel;
     private final JTable table;
     private final JScrollPane tableScrollPane;
-    private final ArrayList<VoceBilancio> voci;
+    private final ArrayList<BalanceEntry> entries;
 
-    public BudgetTablePanel(ArrayList<VoceBilancio> voci) {
+    public TablePanel(ArrayList<BalanceEntry> entries) {
         super();
 
-        this.voci = voci;
+        this.entries = entries;
 
         tableModel = new BudgetTableModel();
         table = new JTable(tableModel);
@@ -29,7 +29,7 @@ public class BudgetTablePanel extends JPanel {
     public class BudgetTableModel extends AbstractTableModel {
         @Override
         public int getRowCount() {
-            return voci.size();
+            return entries.size();
         }
 
         @Override
@@ -49,15 +49,15 @@ public class BudgetTablePanel extends JPanel {
 
         @Override
         public Object getValueAt(int rowIndex, int columnIndex) {
-            VoceBilancio voce = voci.get(rowIndex);
+            BalanceEntry voce = entries.get(rowIndex);
             switch (columnIndex) {
                 case 0: // Descrizione
-                    return voce.getDescrizione();
+                    return voce.getDescription();
                 case 1: // Importo
-                    return voce.getImporto();
+                    return voce.getAmount();
                 case 2: // Data
                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/uuuu HH:mm");
-                    return dtf.format(voce.getData());
+                    return dtf.format(voce.getDatetime());
                 default:
                     return null;
             }

@@ -1,16 +1,16 @@
 package gui;
 
-import gui.panels.BudgetTablePanel;
-import logic.Bilancio;
+import gui.panels.TablePanel;
+import logic.Balance;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class BudgetBuddyFrame extends JFrame {
-    private final BudgetTablePanel tablePanel;
-    private final Bilancio bl;
+    private final TablePanel tablePanel;
+    private final Balance bl;
 
-    public BudgetBuddyFrame(Bilancio bl) {
+    public BudgetBuddyFrame(Balance bl) {
         super();
 
         this.bl = bl;
@@ -23,9 +23,8 @@ public class BudgetBuddyFrame extends JFrame {
 
         this.add(Box.createVerticalStrut(4));
 
-        tablePanel = new BudgetTablePanel(bl.getVoci());
+        tablePanel = new TablePanel(bl.getEntries());
         c.add(tablePanel);
-
 
         this.pack();
     }
