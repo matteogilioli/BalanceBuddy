@@ -34,15 +34,15 @@ public class BudgetTablePanel extends JPanel {
 
         @Override
         public int getColumnCount() {
-            return 3; // Data, Descrizione, Importo
+            return 3; // Descrizione, Importo, Data
         }
 
         @Override
         public String getColumnName(int columnIndex) {
             switch(columnIndex) {
-                case 0: return "Data";
-                case 1: return "Descrizione";
-                case 2: return "Importo";
+                case 0: return "Descrizione";
+                case 1: return "Importo";
+                case 2: return "Data";
                 default: return null;
             }
         }
@@ -51,13 +51,13 @@ public class BudgetTablePanel extends JPanel {
         public Object getValueAt(int rowIndex, int columnIndex) {
             VoceBilancio voce = voci.get(rowIndex);
             switch (columnIndex) {
-                case 0: // Data
+                case 0: // Descrizione
+                    return voce.getDescrizione();
+                case 1: // Importo
+                    return voce.getImporto();
+                case 2: // Data
                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/uuuu HH:mm");
                     return dtf.format(voce.getData());
-                case 1: // Descrizione
-                    return voce.getDescrizione();
-                case 2: // Importo
-                    return voce.getImporto();
                 default:
                     return null;
             }

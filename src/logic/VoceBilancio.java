@@ -3,18 +3,14 @@ package logic;
 import java.time.LocalDateTime;
 
 public abstract class VoceBilancio {
-    private LocalDateTime data;
     private String descrizione;
     private double importo;
+    private LocalDateTime data;
 
     public VoceBilancio(String descrizione, double importo) {
         this.data = LocalDateTime.now();
         this.descrizione = descrizione;
         this.importo = importo;
-    }
-
-    public LocalDateTime getData() {
-        return data;
     }
 
     public String getDescrizione() {
@@ -25,8 +21,8 @@ public abstract class VoceBilancio {
         return importo;
     }
 
-    public void setData(LocalDateTime data) {
-        this.data = data;
+    public LocalDateTime getData() {
+        return data;
     }
 
     public void setDescrizione(String descrizione) {
@@ -35,6 +31,10 @@ public abstract class VoceBilancio {
 
     public void setImporto(double importo) {
         this.importo = importo;
+    }
+
+    public void setData(LocalDateTime data) {
+        this.data = data;
     }
 }
 
