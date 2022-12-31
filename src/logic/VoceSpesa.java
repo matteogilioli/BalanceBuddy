@@ -1,3 +1,5 @@
+package logic;
+
 import java.util.Date;
 
 public class VoceSpesa extends VoceBilancio {

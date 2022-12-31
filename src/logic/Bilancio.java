@@ -1,3 +1,5 @@
+package logic;
+
 public class Bilancio {
     private static double saldo = 0;
 
