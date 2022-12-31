@@ -1,23 +1,19 @@
 package logic;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public abstract class VoceBilancio {
-    private Date data;
+    private LocalDateTime data;
     private String descrizione;
     private double importo;
 
-    public VoceBilancio(Date data, String descrizione, double importo) {
-        this.data = data;
+    public VoceBilancio(String descrizione, double importo) {
+        this.data = LocalDateTime.now();
         this.descrizione = descrizione;
         this.importo = importo;
     }
 
-    public VoceBilancio(String descrizione, double importo) {
-        this(new Date(), descrizione, importo);
-    }
-
-    public Date getData() {
+    public LocalDateTime getData() {
         return data;
     }
 
@@ -29,7 +25,7 @@ public abstract class VoceBilancio {
         return importo;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDateTime data) {
         this.data = data;
     }
 
