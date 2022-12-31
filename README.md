@@ -23,8 +23,8 @@ La ricerca evidenzia la prima cella/riga che contiene il testo cercato; l’appl
 
 ## Esportazione del bilancio
 L’utente ha la possibilità di esportare il bilancio in diversi formati:
-- formato CSV (Comma Separated Values), in cui ogni voce è rappresentata da una riga in un file, e ogni elemento della voce è separato da una virgola (‘,’);
-- formato testuale, in cui ogni voce è rappresentata da una riga in un file, e ogni elemento della voce è separato da un separatore (tabulazione).
+- formato CSV (Comma Separated Values), in cui ogni voce è rappresentata da una riga in un file, e ogni elemento della voce è separato da una virgola ( , )
+- formato testuale, in cui ogni voce è rappresentata da una riga in un file, e ogni elemento della voce è separato da un separatore (tabulazione)
 
 ## Stampa del bilancio
 L’utente ha la possibilità di stampare il bilancio attraverso una stampante configurata dal sistema operativo.
