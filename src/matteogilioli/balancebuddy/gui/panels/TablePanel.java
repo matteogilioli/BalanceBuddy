@@ -1,6 +1,6 @@
-package gui.panels;
+package matteogilioli.balancebuddy.gui.panels;
 
-import logic.BalanceEntry;
+import matteogilioli.balancebuddy.logic.BalanceEntry;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -8,10 +8,9 @@ import java.awt.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class TablePanel extends JPanel {
-    private final BudgetTableModel tableModel;
+public final class TablePanel extends JPanel {
+    private final BalanceTableModel tableModel;
     private final JTable table;
-    private final JScrollPane tableScrollPane;
     private final ArrayList<BalanceEntry> entries;
 
     public TablePanel(ArrayList<BalanceEntry> entries) {
@@ -19,14 +18,22 @@ public class TablePanel extends JPanel {
 
         this.entries = entries;
 
-        tableModel = new BudgetTableModel();
+        tableModel = new BalanceTableModel();
         table = new JTable(tableModel);
-        tableScrollPane = new JScrollPane(table);
+        JScrollPane tableScrollPane = new JScrollPane(table);
 
         this.add(tableScrollPane, BorderLayout.CENTER);
     }
 
-    public class BudgetTableModel extends AbstractTableModel {
+    public int[] getSelectedIndexes() {
+        return table.getSelectedRows();
+    }
+
+    public void updateTable() {
+        tableModel.fireTableDataChanged();
+    }
+
+    public final class BalanceTableModel extends AbstractTableModel {
         @Override
         public int getRowCount() {
             return entries.size();
@@ -39,28 +46,32 @@ public class TablePanel extends JPanel {
 
         @Override
         public String getColumnName(int columnIndex) {
-            switch(columnIndex) {
-                case 0: return "Descrizione";
-                case 1: return "Importo";
-                case 2: return "Data";
-                default: return null;
-            }
+            return switch (columnIndex) {
+                case 0:
+                    yield "Descrizione";
+                case 1:
+                    yield "Importo";
+                case 2:
+                    yield "Data";
+                default:
+                    yield null;
+            };
         }
 
         @Override
         public Object getValueAt(int rowIndex, int columnIndex) {
             BalanceEntry voce = entries.get(rowIndex);
-            switch (columnIndex) {
+            return switch (columnIndex) {
                 case 0: // Descrizione
-                    return voce.getDescription();
+                    yield voce.getDescription();
                 case 1: // Importo
-                    return voce.getAmount();
+                    yield voce.getAmount();
                 case 2: // Data
                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/uuuu HH:mm");
-                    return dtf.format(voce.getDatetime());
+                    yield dtf.format(voce.getDatetime());
                 default:
-                    return null;
-            }
+                    yield null;
+            };
         }
     }
 }

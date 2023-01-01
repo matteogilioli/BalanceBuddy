@@ -1,6 +1,6 @@
-package logic;
+package matteogilioli.balancebuddy.logic;
 
-public class ExpenseEntry extends BalanceEntry {
+public final class ExpenseEntry extends BalanceEntry {
     public ExpenseEntry(String description, double amount) {
         super(description, -amount);
     }
