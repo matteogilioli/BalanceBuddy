@@ -1,17 +1,18 @@
 package matteogilioli.balancebuddy.gui;
 
-import matteogilioli.balancebuddy.gui.components.CreateDialog;
-import matteogilioli.balancebuddy.gui.panels.ButtonsPanel;
-import matteogilioli.balancebuddy.gui.panels.TablePanel;
+import matteogilioli.balancebuddy.gui.panels.FormPanel;
+import matteogilioli.balancebuddy.gui.panels.TableButtonsPanel;
+import matteogilioli.balancebuddy.gui.panels.Table;
 import matteogilioli.balancebuddy.logic.Balance;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public final class BudgetBuddyFrame extends JFrame {
-    private final TablePanel tablePanel;
+    private final Table table;
+    private final TableButtonsPanel tableButtonsPanel;
+    private final FormPanel form;
     private final Balance balance;
 
     public BudgetBuddyFrame(Balance balance) {
@@ -19,36 +20,39 @@ public final class BudgetBuddyFrame extends JFrame {
 
         this.balance = balance;
 
-        this.setTitle("BudgetBuddy");
-        this.setResizable(false);
-
-        Container c = this.getContentPane();
-        c.setLayout(new BoxLayout(c, BoxLayout.PAGE_AXIS));
-
-        this.add(Box.createVerticalStrut(4));
-
-        tablePanel = new TablePanel(balance.getEntries());
-        c.add(tablePanel);
+        table = new Table(balance.getEntries());
 
         ActionListener deleteListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int[] selectedIndexes = tablePanel.getSelectedIndexes();
+                int[] selectedIndexes = table.getSelectedIndexes();
                 balance.removeEntries(selectedIndexes);
-                tablePanel.updateTable();
+                table.updateTable();
             }
         };
+        ActionListener editListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
+            }
+        };
         ActionListener addListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new CreateDialog();
+
             }
         };
 
-        ButtonsPanel buttonRow = new ButtonsPanel(deleteListener, addListener);
-        this.add(buttonRow);
+        form = new FormPanel(addListener);
+        tableButtonsPanel = new TableButtonsPanel(table, deleteListener, editListener);
 
+        this.setTitle("BudgetBuddy");
+        this.setResizable(false);
+        this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.X_AXIS));
+        this.add(Box.createHorizontalStrut(30));
+        this.add(form);
+        this.add(Box.createHorizontalStrut(20));
+        this.add(tableButtonsPanel);
         this.pack();
     }
 }

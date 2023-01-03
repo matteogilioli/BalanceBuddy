@@ -8,12 +8,12 @@ import java.awt.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public final class TablePanel extends JPanel {
+public final class Table extends JPanel {
     private final BalanceTableModel tableModel;
     private final JTable table;
     private final ArrayList<BalanceEntry> entries;
 
-    public TablePanel(ArrayList<BalanceEntry> entries) {
+    public Table(ArrayList<BalanceEntry> entries) {
         super();
 
         this.entries = entries;
