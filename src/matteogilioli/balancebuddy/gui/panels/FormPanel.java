@@ -17,11 +17,11 @@ public class FormPanel extends JPanel {
     public FormPanel(ActionListener addListener) {
         super();
 
-        amount.setColumns((15));
-        JComponent[] components = {description, amount, datetime};
-
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
+
+        amount.setColumns((15));
+        JComponent[] components = {description, amount, datetime};
 
         for (int i = 0; i < rows; i++) {
             c.anchor = GridBagConstraints.LINE_END; c.gridx = 0; c.gridy = i;
