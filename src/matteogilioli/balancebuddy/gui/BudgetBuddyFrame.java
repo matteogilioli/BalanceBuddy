@@ -39,7 +39,8 @@ public final class BudgetBuddyFrame extends JFrame {
         ActionListener addListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                // balance.addEntry(form.getEntry());
+                table.updateTable();
             }
         };
 
