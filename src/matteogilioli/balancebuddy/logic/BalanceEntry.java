@@ -1,6 +1,7 @@
 package matteogilioli.balancebuddy.logic;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public abstract class BalanceEntry {
     private String description;
@@ -11,6 +12,12 @@ public abstract class BalanceEntry {
         this.description = description;
         this.amount = amount;
         this.datetime = LocalDateTime.now();
+    }
+
+    public BalanceEntry(String description, double amount, LocalDateTime datetime) {
+        this.description = description;
+        this.amount = amount;
+        this.datetime = datetime;
     }
 
     public final String getDescription() {

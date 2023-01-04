@@ -2,15 +2,20 @@ package matteogilioli.balancebuddy.gui;
 
 import matteogilioli.balancebuddy.gui.panels.FormPanel;
 import matteogilioli.balancebuddy.gui.panels.TableButtonsPanel;
-import matteogilioli.balancebuddy.gui.panels.Table;
+import matteogilioli.balancebuddy.gui.components.TablePanel;
 import matteogilioli.balancebuddy.logic.Balance;
+import matteogilioli.balancebuddy.logic.BalanceEntry;
+import matteogilioli.balancebuddy.logic.ExpenseEntry;
+import matteogilioli.balancebuddy.logic.IncomeEntry;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 public final class BudgetBuddyFrame extends JFrame {
-    private final Table table;
+    private final TablePanel table;
     private final TableButtonsPanel tableButtonsPanel;
     private final FormPanel form;
     private final Balance balance;
@@ -20,7 +25,7 @@ public final class BudgetBuddyFrame extends JFrame {
 
         this.balance = balance;
 
-        table = new Table(balance.getEntries());
+        table = new TablePanel(balance.getEntries());
 
         ActionListener deleteListener = new ActionListener() {
             @Override
@@ -39,7 +44,18 @@ public final class BudgetBuddyFrame extends JFrame {
         ActionListener addListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // balance.addEntry(form.getEntry());
+                String description = form.getDescription();
+                double amount = form.getAmount();
+                LocalDateTime datetime = form.getDatetime();
+
+                BalanceEntry entry = switch (form.getType()) {
+                    case "Entrata" -> new IncomeEntry(description, amount, datetime);
+                    case "Uscita" -> new ExpenseEntry(description, amount, datetime);
+                    default -> throw new IllegalStateException("Unexpected value: " + form.getType());
+                };
+
+                form.clear();
+                balance.addEntry(entry);
                 table.updateTable();
             }
         };

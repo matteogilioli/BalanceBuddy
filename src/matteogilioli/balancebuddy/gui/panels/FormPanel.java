@@ -1,17 +1,23 @@
 package matteogilioli.balancebuddy.gui.panels;
 
+import matteogilioli.balancebuddy.gui.components.AddButton;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 
 public class FormPanel extends JPanel {
-    private static final String[] labels = {"Descrizione: ", "Importo: ", "Data: "};
+    private static final String[] labels = {"Tipo", "Descrizione: ", "Importo: ", "Data: "};
     private static final int rows = labels.length;
+    private final AddButton addButton;
+    private final JComboBox type = new JComboBox("Entrata, Uscita".split(", "));
     private final JTextField description = new JTextField(15);
-    private final JFormattedTextField amount = new JFormattedTextField(NumberFormat.getCurrencyInstance());
+    private final JTextField amount = new JTextField(15);
     private final JSpinner datetime = new JSpinner(new SpinnerDateModel(new Date(), null, null, Calendar.MONTH));
 
     public FormPanel(ActionListener addListener) {
@@ -21,7 +27,7 @@ public class FormPanel extends JPanel {
         GridBagConstraints c = new GridBagConstraints();
 
         amount.setColumns((15));
-        JComponent[] components = {description, amount, datetime};
+        JComponent[] components = {type, description, amount, datetime};
 
         for (int i = 0; i < rows; i++) {
             c.anchor = GridBagConstraints.LINE_END; c.gridx = 0; c.gridy = i;
@@ -31,10 +37,31 @@ public class FormPanel extends JPanel {
             this.add(components[i], c);
         }
 
-        ImageIcon addIcon = new ImageIcon("resources/add.png");
-        JButton addButton = new JButton("Aggiungi / Modifica", addIcon);
-        addButton.addActionListener(addListener);
-        c.gridx = 1; c.gridy = 3;
+        c.gridx = 1; c.gridy = 4;
+        addButton = new AddButton(addListener);
         this.add(addButton, c);
+    }
+
+    public String getType() {
+        return (String) type.getSelectedItem();
+    }
+
+    public String getDescription() {
+        return description.getText();
+    }
+
+    public double getAmount() {
+        return Double.parseDouble(amount.getText());
+    }
+
+    public LocalDateTime getDatetime() {
+        Date date = (Date) datetime.getValue();
+        return LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
+    }
+
+    public void clear() {
+        description.setText("");
+        amount.setText("");
+        datetime.setValue(new Date());
     }
 }

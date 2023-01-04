@@ -1,19 +1,29 @@
 package matteogilioli.balancebuddy.gui.panels;
 
+import matteogilioli.balancebuddy.gui.components.DeleteButton;
+import matteogilioli.balancebuddy.gui.components.EditButton;
+import matteogilioli.balancebuddy.gui.components.TablePanel;
+
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
 public class TableButtonsPanel extends JPanel {
-    private final EditDeleteButtons editDeleteButtons;
+    private final EditButton editButton;
+    private final DeleteButton deleteButton;
 
-    public TableButtonsPanel(Table table, ActionListener onDeleteButtonClick, ActionListener onEditButtonClick) {
+    public TableButtonsPanel(TablePanel table, ActionListener deleteListener, ActionListener editListener) {
         super();
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        editDeleteButtons = new EditDeleteButtons(onDeleteButtonClick, onEditButtonClick);
+        deleteButton = new DeleteButton(deleteListener);
+        editButton = new EditButton(editListener);
+
+        JPanel buttonsPanel = new JPanel();
+        buttonsPanel.add(deleteButton);
+        buttonsPanel.add(editButton);
 
         this.add(table);
-        this.add(editDeleteButtons);
+        this.add(buttonsPanel);
     }
 }
