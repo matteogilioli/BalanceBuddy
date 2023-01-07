@@ -1,8 +1,10 @@
 package matteogilioli.balancebuddy.gui.panels;
 
 import matteogilioli.balancebuddy.gui.components.AddButton;
+import matteogilioli.balancebuddy.gui.components.CurrencyFilter;
 
 import javax.swing.*;
+import javax.swing.text.AbstractDocument;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
@@ -25,6 +27,9 @@ public class FormPanel extends JPanel {
 
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
+
+        AbstractDocument doc = (AbstractDocument) amount.getDocument();
+        doc.setDocumentFilter(new CurrencyFilter());
 
         amount.setColumns((15));
         JComponent[] components = {type, description, amount, datetime};
