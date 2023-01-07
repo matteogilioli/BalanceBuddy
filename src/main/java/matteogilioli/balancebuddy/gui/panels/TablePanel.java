@@ -18,7 +18,7 @@ public final class TablePanel extends JPanel {
         tableModel = new BalanceTableModel(entries);
         table = new JTable(tableModel);
         DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
-        rightRenderer.setHorizontalAlignment( JLabel.RIGHT );
+        rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
         table.getColumnModel().getColumn(1).setCellRenderer(rightRenderer);
         table.getColumnModel().getColumn(2).setCellRenderer(rightRenderer);
 
