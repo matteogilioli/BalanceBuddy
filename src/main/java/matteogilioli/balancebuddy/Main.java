@@ -1,5 +1,6 @@
 package matteogilioli.balancebuddy;
 
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import matteogilioli.balancebuddy.gui.BudgetBuddyFrame;
 import matteogilioli.balancebuddy.logic.Balance;
 import matteogilioli.balancebuddy.logic.ExpenseEntry;
@@ -11,6 +12,7 @@ public final class Main {
     private static final Balance balance = new Balance();
 
     public static void main(String[] args) {
+        FlatMacLightLaf.setup();
 
         // Voci di esempio
         Balance.addEntry(new ExpenseEntry("Netflix", 14.99));

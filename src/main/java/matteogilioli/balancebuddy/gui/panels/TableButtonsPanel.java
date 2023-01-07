@@ -2,7 +2,6 @@ package matteogilioli.balancebuddy.gui.panels;
 
 import matteogilioli.balancebuddy.gui.components.DeleteButton;
 import matteogilioli.balancebuddy.gui.components.EditButton;
-import matteogilioli.balancebuddy.gui.components.TablePanel;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;

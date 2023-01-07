@@ -2,7 +2,7 @@ package matteogilioli.balancebuddy.gui;
 
 import matteogilioli.balancebuddy.gui.panels.FormPanel;
 import matteogilioli.balancebuddy.gui.panels.TableButtonsPanel;
-import matteogilioli.balancebuddy.gui.components.TablePanel;
+import matteogilioli.balancebuddy.gui.panels.TablePanel;
 import matteogilioli.balancebuddy.logic.Balance;
 import matteogilioli.balancebuddy.logic.BalanceEntry;
 import matteogilioli.balancebuddy.logic.ExpenseEntry;
@@ -12,7 +12,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public final class BudgetBuddyFrame extends JFrame {
     private final TablePanel table;
