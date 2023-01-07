@@ -14,7 +14,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class FormPanel extends JPanel {
-    private static final String[] labels = {"Tipo", "Descrizione: ", "Importo: ", "Data: "};
+    private static final String[] labels = {"Tipo", "Descrizione", "Importo", "Data"};
     private static final int rows = labels.length;
     private final AddButton addButton;
     private final JComboBox type = new JComboBox("Entrata, Uscita".split(", "));
