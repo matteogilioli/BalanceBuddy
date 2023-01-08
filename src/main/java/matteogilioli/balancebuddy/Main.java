@@ -18,8 +18,8 @@ public final class Main {
         Balance.addEntry(new ExpenseEntry("Netflix", 14.99));
         Balance.addEntry(new ExpenseEntry("Spesa", 50));
         Balance.addEntry(new IncomeEntry("Stipendio", 800));
-        Balance.addEntry(new ExpenseEntry("Mancia nonni", 50));
-        Balance.addEntry(new ExpenseEntry("Sushi", 14.99));
+        Balance.addEntry(new ExpenseEntry("Mancia", 50));
+        Balance.addEntry(new ExpenseEntry("Ristorante Oriente", 14.99));
         Balance.addEntry(new IncomeEntry("Benzina", 60));
 
         BudgetBuddyFrame f = new BudgetBuddyFrame(balance);

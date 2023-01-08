@@ -21,18 +21,18 @@ public final class BalanceTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 3; // Descrizione, Importo, Data
+        return 3; // Data, descrizione, importo
     }
 
     @Override
     public String getColumnName(int columnIndex) {
         return switch (columnIndex) {
             case 0:
-                yield "Descrizione";
-            case 1:
-                yield "Importo";
-            case 2:
                 yield "Data";
+            case 1:
+                yield "Descrizione";
+            case 2:
+                yield "Importo";
             default:
                 yield null;
         };
@@ -42,14 +42,14 @@ public final class BalanceTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         BalanceEntry voce = entries.get(rowIndex);
         return switch (columnIndex) {
-            case 0: // Descrizione
-                yield voce.getDescription();
-            case 1: // Importo
-                NumberFormat nf = NumberFormat.getCurrencyInstance();
-                yield nf.format(voce.getAmount());
-            case 2: // Data
+            case 0: // Data
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/uuuu HH:mm");
                 yield dtf.format(voce.getDatetime());
+            case 1: // Descrizione
+                yield voce.getDescription();
+            case 2: // Importo
+                NumberFormat nf = NumberFormat.getCurrencyInstance();
+                yield nf.format(voce.getAmount());
             default:
                 yield null;
         };

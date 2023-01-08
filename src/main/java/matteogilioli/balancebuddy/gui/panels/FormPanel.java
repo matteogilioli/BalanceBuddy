@@ -7,7 +7,6 @@ import javax.swing.*;
 import javax.swing.text.AbstractDocument;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.text.NumberFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Calendar;
@@ -17,13 +16,18 @@ public class FormPanel extends JPanel {
     private static final String[] labels = {"Tipo", "Descrizione", "Importo", "Data"};
     private static final int rows = labels.length;
     private final AddButton addButton;
-    private final JComboBox type = new JComboBox("Entrata, Uscita".split(", "));
-    private final JTextField description = new JTextField(15);
-    private final JTextField amount = new JTextField(15);
+    private final JComboBox<String> type = new JComboBox<>("Entrata, Uscita".split(", "));
+    private final JTextField description = new JTextField();
+    private final JTextField amount = new JTextField();
     private final JSpinner datetime = new JSpinner(new SpinnerDateModel(new Date(), null, null, Calendar.MONTH));
 
     public FormPanel(ActionListener addListener) {
         super();
+
+        type.setPreferredSize(new Dimension(180, 30));
+        description.setPreferredSize(new Dimension(180, 30));
+        amount.setPreferredSize(new Dimension(180, 30));
+        datetime.setPreferredSize(new Dimension(180, 30));
 
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -31,7 +35,6 @@ public class FormPanel extends JPanel {
         AbstractDocument doc = (AbstractDocument) amount.getDocument();
         doc.setDocumentFilter(new CurrencyFilter());
 
-        amount.setColumns((15));
         JComponent[] components = {type, description, amount, datetime};
 
         for (int i = 0; i < rows; i++) {

@@ -12,7 +12,7 @@ public class AddButton extends JButton {
     private static final FontIcon icon = FontIcon.of(FontAwesomeSolid.PLUS, 16, new Color(0, 153, 51));
 
     public AddButton(ActionListener onDeleteButtonClick) {
-        super("Modifica selezionati", icon);
+        super("Aggiungi", icon);
         this.addActionListener(onDeleteButtonClick);
         this.setPreferredSize(new Dimension(180, 35));
     }
