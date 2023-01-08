@@ -1,6 +1,6 @@
 package matteogilioli.balancebuddy.gui.panels;
 
-import matteogilioli.balancebuddy.gui.components.BalanceTableModel;
+import matteogilioli.balancebuddy.gui.logic.BalanceTableModel;
 import matteogilioli.balancebuddy.logic.BalanceEntry;
 
 import javax.swing.*;

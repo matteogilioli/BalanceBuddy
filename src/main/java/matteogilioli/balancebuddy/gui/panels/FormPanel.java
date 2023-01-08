@@ -1,7 +1,7 @@
 package matteogilioli.balancebuddy.gui.panels;
 
 import matteogilioli.balancebuddy.gui.components.AddButton;
-import matteogilioli.balancebuddy.gui.components.CurrencyFilter;
+import matteogilioli.balancebuddy.gui.logic.CurrencyFilter;
 
 import javax.swing.*;
 import javax.swing.text.AbstractDocument;

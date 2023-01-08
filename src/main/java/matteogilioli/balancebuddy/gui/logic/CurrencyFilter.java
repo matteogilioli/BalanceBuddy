@@ -1,4 +1,4 @@
-package matteogilioli.balancebuddy.gui.components;
+package matteogilioli.balancebuddy.gui.logic;
 
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
