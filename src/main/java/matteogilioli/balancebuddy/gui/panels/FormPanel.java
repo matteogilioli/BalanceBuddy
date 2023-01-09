@@ -20,7 +20,7 @@ public class FormPanel extends JPanel {
     private final JComboBox<String> type = new JComboBox<>("Entrata, Uscita".split(", "));
     private final JTextField description = new JTextField();
     private final JTextField amount = new JTextField();
-    private final JSpinner datetime = new JSpinner(new SpinnerDateModel(new Date(), null, null, Calendar.MONTH));
+    private final JSpinner datetime = new JSpinner(new SpinnerDateModel());
 
     public FormPanel(Balance balance, BalanceTable table) {
         super();
@@ -30,6 +30,9 @@ public class FormPanel extends JPanel {
 
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
+
+        JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(datetime, "dd/MM/yyyy HH:mm");
+        datetime.setEditor(dateEditor);
 
         type.setPreferredSize(new Dimension(180, 30));
         datetime.setPreferredSize(new Dimension(180, 30));
