@@ -65,6 +65,9 @@ public final class BalanceTableModel extends AbstractTableModel {
             case 0: // Data
                 voce.setDatetime((Date) aValue);
                 break;
+            case 1: // Descrizione
+                voce.setDescription((String) aValue);
+                break;
         }
     }
 }

@@ -1,7 +1,7 @@
 package matteogilioli.balancebuddy.gui.listener;
 
-import matteogilioli.balancebuddy.gui.table.BalanceTable;
 import matteogilioli.balancebuddy.gui.panels.FormPanel;
+import matteogilioli.balancebuddy.gui.table.BalanceTable;
 import matteogilioli.balancebuddy.logic.Balance;
 import matteogilioli.balancebuddy.logic.BalanceEntry;
 import matteogilioli.balancebuddy.logic.ExpenseEntry;
