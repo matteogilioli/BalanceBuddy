@@ -3,7 +3,6 @@ package matteogilioli.balancebuddy.gui.table;
 import matteogilioli.balancebuddy.logic.BalanceEntry;
 
 import javax.swing.table.AbstractTableModel;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Date;
 

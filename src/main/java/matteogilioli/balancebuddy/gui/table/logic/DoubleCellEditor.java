@@ -1,10 +1,8 @@
 package matteogilioli.balancebuddy.gui.table.logic;
 
 import javax.swing.*;
-import javax.swing.table.TableCellEditor;
 import java.awt.*;
 import java.text.NumberFormat;
-import java.util.Date;
 
 public class DoubleCellEditor extends DefaultCellEditor {
     private final JFormattedTextField doubleEditor;

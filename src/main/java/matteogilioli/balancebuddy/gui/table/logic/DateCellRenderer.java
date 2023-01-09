@@ -2,7 +2,6 @@ package matteogilioli.balancebuddy.gui.table.logic;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
-import java.awt.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
