@@ -15,14 +15,8 @@ public class DateCellRenderer extends DefaultTableCellRenderer {
     }
 
     @Override
-    public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-        super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-
-        if (value instanceof Date) {
-            setText(formatter.format((Date) value));
-            this.setHorizontalAlignment(JLabel.CENTER);
-        }
-
-        return this;
+    public void setValue(Object value) {
+        setText(formatter.format((Date) value));
+        this.setHorizontalAlignment(JLabel.CENTER);
     }
 }

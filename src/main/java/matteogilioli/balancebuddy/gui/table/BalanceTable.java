@@ -1,7 +1,9 @@
 package matteogilioli.balancebuddy.gui.table;
 
+import matteogilioli.balancebuddy.gui.logic.CurrencyCellRenderer;
 import matteogilioli.balancebuddy.gui.logic.DateCellEditor;
 import matteogilioli.balancebuddy.gui.logic.DateCellRenderer;
+import matteogilioli.balancebuddy.gui.logic.DoubleCellEditor;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -20,9 +22,8 @@ public class BalanceTable extends JTable {
         dateColumn.setCellEditor(new DateCellEditor());
         dateColumn.setCellRenderer(new DateCellRenderer());
 
-        DefaultTableCellRenderer rightRender = new DefaultTableCellRenderer();
-        rightRender.setHorizontalAlignment(JLabel.RIGHT);
-        amountColumn.setCellRenderer(rightRender);
+        amountColumn.setCellEditor(new DoubleCellEditor());
+        amountColumn.setCellRenderer(new CurrencyCellRenderer());
     }
 
     public void updateTable() {

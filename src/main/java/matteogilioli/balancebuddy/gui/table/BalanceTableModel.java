@@ -47,8 +47,7 @@ public final class BalanceTableModel extends AbstractTableModel {
             case 1: // Descrizione
                 yield voce.getDescription();
             case 2: // Importo
-                NumberFormat nf = NumberFormat.getCurrencyInstance();
-                yield nf.format(voce.getAmount());
+                yield voce.getAmount();
             default:
                 yield null;
         };
@@ -67,6 +66,9 @@ public final class BalanceTableModel extends AbstractTableModel {
                 break;
             case 1: // Descrizione
                 voce.setDescription((String) aValue);
+                break;
+            case 2: // Importo
+                voce.setAmount((Double) aValue);
                 break;
         }
     }

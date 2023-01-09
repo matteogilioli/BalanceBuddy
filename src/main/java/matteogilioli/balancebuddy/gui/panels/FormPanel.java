@@ -59,7 +59,7 @@ public class FormPanel extends JPanel {
     }
 
     public double getAmount() {
-        return Double.parseDouble(amount.getText());
+        return Double.parseDouble(amount.getText().replace(",", "."));
     }
 
     public Date getDatetime() {

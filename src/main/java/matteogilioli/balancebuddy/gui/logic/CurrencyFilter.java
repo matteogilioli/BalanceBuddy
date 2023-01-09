@@ -8,16 +8,16 @@ public class CurrencyFilter extends DocumentFilter {
     private boolean isValid(String string, FilterBypass fb, int offset) throws BadLocationException {
         String currentText = fb.getDocument().getText(0, fb.getDocument().getLength());
 
-        // Verifica se la stringa da inserire è un numero o un punto
-        if (string.matches("[0-9]*\\.?[0-9]*")) {
+        // Verifica se la stringa da inserire è un numero o una virgola
+        if (string.matches("[0-9]*\\,?[0-9]*")) {
             // Verifica se nel testo c'è già un punto
-            if (currentText.contains(".")) {
-                // Se c'è un punto, verifica se la stringa da inserire è un punto
-                if (string.contains("."))
+            if (currentText.contains(",")) {
+                // Se c'è un punto, verifica se la stringa da inserire è una virgola
+                if (string.contains(","))
                     return false;
 
-                // Verifica se la stringa viene inserita dopo il punto
-                int index = currentText.indexOf(".");
+                // Verifica se la stringa viene inserita dopo la virgola
+                int index = currentText.indexOf(",");
                 if (offset > index)
                     // Se la stringa viene inserita dopo il punto, verifica il numero di cifre dopo il punto
                     if (currentText.length() - index > 2)
