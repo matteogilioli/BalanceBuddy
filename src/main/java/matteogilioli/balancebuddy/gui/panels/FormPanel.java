@@ -1,8 +1,8 @@
 package matteogilioli.balancebuddy.gui.panels;
 
 import matteogilioli.balancebuddy.gui.buttons.AddButton;
-import matteogilioli.balancebuddy.gui.listener.AddListener;
-import matteogilioli.balancebuddy.gui.logic.CurrencyFilter;
+import matteogilioli.balancebuddy.gui.buttons.listener.AddListener;
+import matteogilioli.balancebuddy.gui.table.logic.CurrencyFilter;
 import matteogilioli.balancebuddy.gui.table.BalanceTable;
 import matteogilioli.balancebuddy.logic.Balance;
 
