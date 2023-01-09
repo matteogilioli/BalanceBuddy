@@ -3,10 +3,10 @@ package matteogilioli.balancebuddy.logic;
 import java.util.ArrayList;
 
 public final class Balance {
-    private static final ArrayList<BalanceEntry> entries = new ArrayList<>();
-    private static double totalBalance = 0;
+    private final ArrayList<BalanceEntry> entries = new ArrayList<>();
+    private double totalBalance = 0;
 
-    public static void addEntry(BalanceEntry entry) {
+    public void addEntry(BalanceEntry entry) {
         entries.add(entry);
         if (entry instanceof IncomeEntry)
             totalBalance += entry.getAmount();
@@ -14,7 +14,7 @@ public final class Balance {
             totalBalance -= entry.getAmount();
     }
 
-    public static double getTotalBalance() {
+    public double getTotalBalance() {
         return totalBalance;
     }
 

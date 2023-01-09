@@ -1,12 +1,12 @@
 package matteogilioli.balancebuddy.logic;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public final class ExpenseEntry extends BalanceEntry {
     public ExpenseEntry(String description, double amount) {
         super(description, -amount);
     }
-    public ExpenseEntry(String description, double amount, LocalDateTime datetime) {
+    public ExpenseEntry(String description, double amount, Date datetime) {
         super(description, -amount, datetime);
     }
 

@@ -1,20 +1,19 @@
 package matteogilioli.balancebuddy.logic;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public abstract class BalanceEntry {
     private String description;
     private double amount;
-    private LocalDateTime datetime;
+    private Date datetime;
 
     public BalanceEntry(String description, double amount) {
         this.description = description;
         this.amount = amount;
-        this.datetime = LocalDateTime.now();
+        this.datetime = new Date();
     }
 
-    public BalanceEntry(String description, double amount, LocalDateTime datetime) {
+    public BalanceEntry(String description, double amount, Date datetime) {
         this.description = description;
         this.amount = amount;
         this.datetime = datetime;
@@ -28,7 +27,7 @@ public abstract class BalanceEntry {
         return amount;
     }
 
-    public final LocalDateTime getDatetime() {
+    public final Date getDatetime() {
         return datetime;
     }
 
@@ -40,7 +39,7 @@ public abstract class BalanceEntry {
         this.amount = amount;
     }
 
-    public final void setDatetime(LocalDateTime datetime) {
+    public final void setDatetime(Date datetime) {
         this.datetime = datetime;
     }
 }

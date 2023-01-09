@@ -1,11 +1,11 @@
-package matteogilioli.balancebuddy.gui.logic;
+package matteogilioli.balancebuddy.gui.table;
 
 import matteogilioli.balancebuddy.logic.BalanceEntry;
 
 import javax.swing.table.AbstractTableModel;
 import java.text.NumberFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 
 public final class BalanceTableModel extends AbstractTableModel {
     private final ArrayList<BalanceEntry> entries;
@@ -43,8 +43,7 @@ public final class BalanceTableModel extends AbstractTableModel {
         BalanceEntry voce = entries.get(rowIndex);
         return switch (columnIndex) {
             case 0: // Data
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/uuuu HH:mm");
-                yield dtf.format(voce.getDatetime());
+                yield voce.getDatetime();
             case 1: // Descrizione
                 yield voce.getDescription();
             case 2: // Importo
@@ -53,5 +52,19 @@ public final class BalanceTableModel extends AbstractTableModel {
             default:
                 yield null;
         };
+    }
+
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        return true;
+    }
+
+    @Override
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        BalanceEntry voce = entries.get(rowIndex);
+        switch (columnIndex) {
+            case 0: // Data
+                voce.setDatetime((Date) aValue);
+                break;
+        }
     }
 }

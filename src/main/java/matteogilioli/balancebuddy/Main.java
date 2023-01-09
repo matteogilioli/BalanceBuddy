@@ -15,12 +15,12 @@ public final class Main {
         FlatMacLightLaf.setup();
 
         // Voci di esempio
-        Balance.addEntry(new ExpenseEntry("Netflix", 14.99));
-        Balance.addEntry(new ExpenseEntry("Spesa", 50));
-        Balance.addEntry(new IncomeEntry("Stipendio", 800));
-        Balance.addEntry(new ExpenseEntry("Mancia", 50));
-        Balance.addEntry(new ExpenseEntry("Ristorante Oriente", 14.99));
-        Balance.addEntry(new IncomeEntry("Benzina", 60));
+        balance.addEntry(new ExpenseEntry("Netflix", 14.99));
+        balance.addEntry(new ExpenseEntry("Spesa", 50));
+        balance.addEntry(new IncomeEntry("Stipendio", 800));
+        balance.addEntry(new ExpenseEntry("Mancia", 50));
+        balance.addEntry(new ExpenseEntry("Ristorante Oriente", 14.99));
+        balance.addEntry(new IncomeEntry("Benzina", 60));
 
         BudgetBuddyFrame f = new BudgetBuddyFrame(balance);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

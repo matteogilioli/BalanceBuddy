@@ -1,6 +1,5 @@
-package matteogilioli.balancebuddy.gui.components;
+package matteogilioli.balancebuddy.gui.buttons;
 
-import org.kordamp.ikonli.fontawesome5.FontAwesomeRegular;
 import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid;
 import org.kordamp.ikonli.swing.FontIcon;
 

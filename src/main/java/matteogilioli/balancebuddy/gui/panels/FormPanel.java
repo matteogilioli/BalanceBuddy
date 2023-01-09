@@ -1,14 +1,14 @@
 package matteogilioli.balancebuddy.gui.panels;
 
-import matteogilioli.balancebuddy.gui.components.AddButton;
+import matteogilioli.balancebuddy.gui.buttons.AddButton;
+import matteogilioli.balancebuddy.gui.listener.AddListener;
+import matteogilioli.balancebuddy.gui.table.BalanceTable;
 import matteogilioli.balancebuddy.gui.logic.CurrencyFilter;
+import matteogilioli.balancebuddy.logic.Balance;
 
 import javax.swing.*;
 import javax.swing.text.AbstractDocument;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -21,7 +21,7 @@ public class FormPanel extends JPanel {
     private final JTextField amount = new JTextField();
     private final JSpinner datetime = new JSpinner(new SpinnerDateModel(new Date(), null, null, Calendar.MONTH));
 
-    public FormPanel(ActionListener addListener) {
+    public FormPanel(Balance balance, BalanceTable table) {
         super();
 
         type.setPreferredSize(new Dimension(180, 30));
@@ -46,7 +46,7 @@ public class FormPanel extends JPanel {
         }
 
         c.gridx = 1; c.gridy = 4;
-        addButton = new AddButton(addListener);
+        addButton = new AddButton(new AddListener(this, table, balance));
         this.add(addButton, c);
     }
 
@@ -62,9 +62,8 @@ public class FormPanel extends JPanel {
         return Double.parseDouble(amount.getText());
     }
 
-    public LocalDateTime getDatetime() {
-        Date date = (Date) datetime.getValue();
-        return LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
+    public Date getDatetime() {
+        return (Date) datetime.getValue();
     }
 
     public void clear() {
