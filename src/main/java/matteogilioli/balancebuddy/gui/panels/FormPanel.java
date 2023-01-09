@@ -13,7 +13,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class FormPanel extends JPanel {
-    private static final String[] labels = {"Tipo", "Descrizione", "Importo", "Data"};
+    private static final String[] labels = {"Tipo", "Data", "Descrizione", "Importo"};
     private static final int rows = labels.length;
     private final AddButton addButton;
     private final JComboBox<String> type = new JComboBox<>("Entrata, Uscita".split(", "));
@@ -25,9 +25,9 @@ public class FormPanel extends JPanel {
         super();
 
         type.setPreferredSize(new Dimension(180, 30));
+        datetime.setPreferredSize(new Dimension(180, 30));
         description.setPreferredSize(new Dimension(180, 30));
         amount.setPreferredSize(new Dimension(180, 30));
-        datetime.setPreferredSize(new Dimension(180, 30));
 
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -35,7 +35,7 @@ public class FormPanel extends JPanel {
         AbstractDocument doc = (AbstractDocument) amount.getDocument();
         doc.setDocumentFilter(new CurrencyFilter());
 
-        JComponent[] components = {type, description, amount, datetime};
+        JComponent[] components = {type, datetime, description, amount};
 
         for (int i = 0; i < rows; i++) {
             c.anchor = GridBagConstraints.LINE_END; c.gridx = 0; c.gridy = i;
@@ -67,8 +67,8 @@ public class FormPanel extends JPanel {
     }
 
     public void clear() {
+        datetime.setValue(new Date());
         description.setText("");
         amount.setText("");
-        datetime.setValue(new Date());
     }
 }
