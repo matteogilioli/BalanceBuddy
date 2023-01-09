@@ -25,8 +25,19 @@ public class AddListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String description = form.getDescription();
-        double amount = form.getAmount();
+        String amountString = form.getAmount();
         Date datetime = form.getDatetime();
+
+        if (description.isBlank() && amountString.isBlank())
+            form.setError("ERRORE: Descrizione ed importo mancanti");
+        else if (description.isBlank())
+            form.setError("ERRORE: Descrizione mancante");
+        else if (amountString.isBlank())
+            form.setError("ERRORE: Importo mancante");
+        if (description.isBlank() || amountString.isBlank())
+            return;
+
+        Double amount = Double.parseDouble(amountString);
 
         BalanceEntry entry = switch (form.getType()) {
             case "Entrata" -> new IncomeEntry(description, amount, datetime);
