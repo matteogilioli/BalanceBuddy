@@ -1,8 +1,6 @@
 package matteogilioli.balancebuddy.gui.table;
 
 import matteogilioli.balancebuddy.logic.BalanceEntry;
-import matteogilioli.balancebuddy.logic.ExpenseEntry;
-import matteogilioli.balancebuddy.logic.IncomeEntry;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;

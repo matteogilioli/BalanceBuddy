@@ -5,7 +5,6 @@ import matteogilioli.balancebuddy.gui.panels.TablePanel;
 import matteogilioli.balancebuddy.logic.Balance;
 
 import javax.swing.*;
-import java.awt.*;
 
 public final class BudgetBuddyFrame extends JFrame {
     private final TablePanel tablePanel;
