@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.text.NumberFormat;
 
-public class CurrencyCellRenderer extends DefaultTableCellRenderer {
+public class CurrencyCellRenderer extends BalanceTableCellRenderer {
     private NumberFormat formatter;
 
     public CurrencyCellRenderer() {

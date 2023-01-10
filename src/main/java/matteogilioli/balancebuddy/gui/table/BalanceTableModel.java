@@ -79,4 +79,8 @@ public final class BalanceTableModel extends AbstractTableModel {
         super.fireTableDataChanged();
 
     }
+
+    public ArrayList<BalanceEntry> getEntries() {
+        return entries;
+    }
 }
