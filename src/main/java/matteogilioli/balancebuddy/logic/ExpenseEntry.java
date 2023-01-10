@@ -11,6 +11,6 @@ public final class ExpenseEntry extends BalanceEntry {
     }
     @Override
     public void setAmount(double amount) {
-        super.setAmount(-amount);
+        super.setAmount(amount);
     }
 }

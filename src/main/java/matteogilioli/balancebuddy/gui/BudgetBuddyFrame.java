@@ -1,13 +1,14 @@
 package matteogilioli.balancebuddy.gui;
 
 import matteogilioli.balancebuddy.gui.panels.FormPanel;
-import matteogilioli.balancebuddy.gui.panels.TableButtonsPanel;
+import matteogilioli.balancebuddy.gui.panels.TablePanel;
 import matteogilioli.balancebuddy.logic.Balance;
 
 import javax.swing.*;
+import java.awt.*;
 
 public final class BudgetBuddyFrame extends JFrame {
-    private final TableButtonsPanel tableButtonsPanel;
+    private final TablePanel tablePanel;
     private final FormPanel formPanel;
     private final Balance balance;
 
@@ -16,16 +17,25 @@ public final class BudgetBuddyFrame extends JFrame {
 
         this.balance = balance;
 
-        tableButtonsPanel = new TableButtonsPanel(balance);
-        formPanel = new FormPanel(balance, tableButtonsPanel.getTable());
+        tablePanel = new TablePanel(balance);
+        formPanel = new FormPanel(balance, tablePanel);
 
         this.setTitle("BalanceBuddy");
         this.setResizable(false);
-        this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.X_AXIS));
-        this.add(Box.createHorizontalStrut(30));
-        this.add(formPanel);
-        this.add(Box.createHorizontalStrut(20));
-        this.add(tableButtonsPanel);
+
+        this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
+        this.add(Box.createVerticalStrut(20));
+
+        JPanel main = new JPanel();
+        main.add(Box.createHorizontalStrut(20));
+        main.add(formPanel);
+        main.add(tablePanel);
+        main.add(Box.createHorizontalStrut(20));
+        this.add(main);
+
+        this.add(Box.createVerticalStrut(20));
+        this.pack();
+
         this.pack();
     }
 }

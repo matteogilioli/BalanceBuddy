@@ -1,9 +1,6 @@
 package matteogilioli.balancebuddy.gui.table;
 
-import matteogilioli.balancebuddy.gui.table.logic.CurrencyCellRenderer;
-import matteogilioli.balancebuddy.gui.table.logic.DateCellEditor;
-import matteogilioli.balancebuddy.gui.table.logic.DateCellRenderer;
-import matteogilioli.balancebuddy.gui.table.logic.DoubleCellEditor;
+import matteogilioli.balancebuddy.gui.table.logic.*;
 
 import javax.swing.*;
 import javax.swing.table.TableColumn;

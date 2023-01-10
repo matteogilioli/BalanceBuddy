@@ -1,6 +1,7 @@
-package matteogilioli.balancebuddy.gui.buttons.listener;
+package matteogilioli.balancebuddy.gui.components.buttons.listener;
 
 import matteogilioli.balancebuddy.gui.panels.FormPanel;
+import matteogilioli.balancebuddy.gui.panels.TablePanel;
 import matteogilioli.balancebuddy.gui.table.BalanceTable;
 import matteogilioli.balancebuddy.logic.Balance;
 import matteogilioli.balancebuddy.logic.BalanceEntry;
@@ -13,12 +14,12 @@ import java.util.Date;
 
 public class AddListener implements ActionListener {
     private final FormPanel form;
-    private final BalanceTable table;
+    private final TablePanel tablePanel;
     private final Balance balance;
 
-    public AddListener(FormPanel form, BalanceTable table, Balance balance) {
+    public AddListener(FormPanel form, TablePanel tablePanel, Balance balance) {
         this.form = form;
-        this.table = table;
+        this.tablePanel = tablePanel;
         this.balance = balance;
     }
 
@@ -47,6 +48,6 @@ public class AddListener implements ActionListener {
 
         form.clear();
         balance.addEntry(entry);
-        table.updateTable();
+        tablePanel.updateTable();
     }
 }

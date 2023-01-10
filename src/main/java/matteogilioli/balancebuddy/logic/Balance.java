@@ -8,13 +8,10 @@ public final class Balance {
 
     public void addEntry(BalanceEntry entry) {
         entries.add(entry);
-        if (entry instanceof IncomeEntry)
-            totalBalance += entry.getAmount();
-        else if (entry instanceof ExpenseEntry)
-            totalBalance -= entry.getAmount();
+        totalBalance += entry.getAmount();
     }
 
-    public double getTotalBalance() {
+    public double getTotal() {
         return totalBalance;
     }
 
@@ -25,10 +22,7 @@ public final class Balance {
     public void removeEntries(int[] indexesToRemove) {
         for (int i = indexesToRemove.length - 1; i >= 0; i--) {
             BalanceEntry entry = entries.get(indexesToRemove[i]);
-            if (entry instanceof IncomeEntry)
-                totalBalance -= entry.getAmount();
-            else if (entry instanceof ExpenseEntry)
-                totalBalance += entry.getAmount();
+            totalBalance -= entry.getAmount();
             entries.remove(indexesToRemove[i]);
         }
     }
