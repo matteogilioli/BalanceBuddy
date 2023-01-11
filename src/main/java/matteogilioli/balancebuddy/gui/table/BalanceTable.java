@@ -1,8 +1,6 @@
 package matteogilioli.balancebuddy.gui.table;
 
-import matteogilioli.balancebuddy.gui.components.table.logic.*;
 import matteogilioli.balancebuddy.gui.table.logic.*;
-import matteogilioli.balancebuddy.gui.table.table.logic.*;
 
 import javax.swing.*;
 import javax.swing.table.TableColumn;
