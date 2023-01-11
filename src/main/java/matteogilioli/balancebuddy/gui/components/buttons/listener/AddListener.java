@@ -1,4 +1,4 @@
-package matteogilioli.balancebuddy.gui.buttons.listener;
+package matteogilioli.balancebuddy.gui.components.buttons.listener;
 
 import matteogilioli.balancebuddy.gui.panels.FormPanel;
 import matteogilioli.balancebuddy.gui.panels.TablePanel;

@@ -1,4 +1,4 @@
-package matteogilioli.balancebuddy.gui.buttons;
+package matteogilioli.balancebuddy.gui.components.buttons;
 
 import org.kordamp.ikonli.fontawesome5.FontAwesomeSolid;
 import org.kordamp.ikonli.swing.FontIcon;
