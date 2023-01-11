@@ -27,6 +27,10 @@ public class TablePanel extends JPanel {
         tableScrollPane = new JScrollPane(table);
         deleteButton = new DeleteButton(new DeleteListener(balance, this));
 
+        createGUI();
+    }
+
+    public void createGUI() {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         JPanel bottomPanel = new JPanel();
