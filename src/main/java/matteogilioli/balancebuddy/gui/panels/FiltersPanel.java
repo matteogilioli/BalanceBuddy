@@ -1,5 +1,7 @@
 package matteogilioli.balancebuddy.gui.panels;
 
+import matteogilioli.balancebuddy.gui.components.SpinnerDate;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -14,13 +16,8 @@ public class FiltersPanel extends JPanel {
 
         filterCheckBox = new JCheckBox("Attiva");
 
-        datetimeStart = new JSpinner(new SpinnerDateModel());
-        JSpinner.DateEditor dateEditorStart = new JSpinner.DateEditor(datetimeStart, "dd MMMM yyyy");
-        datetimeStart.setEditor(dateEditorStart);
-
-        datetimeEnd = new JSpinner(new SpinnerDateModel());
-        JSpinner.DateEditor dateEditorEnd = new JSpinner.DateEditor(datetimeEnd, "dd MMMM yyyy");
-        datetimeEnd.setEditor(dateEditorEnd);
+        datetimeStart = new SpinnerDate();
+        datetimeEnd = new SpinnerDate();
 
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();

@@ -2,6 +2,7 @@ package matteogilioli.balancebuddy.gui.panels;
 
 import matteogilioli.balancebuddy.gui.buttons.AddButton;
 import matteogilioli.balancebuddy.gui.buttons.listener.AddListener;
+import matteogilioli.balancebuddy.gui.components.SpinnerDateTime;
 import matteogilioli.balancebuddy.gui.logic.LocaleNumberFormatFactory;
 import matteogilioli.balancebuddy.logic.Balance;
 
@@ -29,9 +30,7 @@ public class FormPanel extends JPanel {
         description = new JTextField();
         amount = new JFormattedTextField();
         amount.setFormatterFactory(new LocaleNumberFormatFactory());
-        datetime = new JSpinner(new SpinnerDateModel());
-        JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(datetime, "dd/MM/yyyy HH:mm");
-        datetime.setEditor(dateEditor);
+        datetime = new SpinnerDateTime();
 
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
