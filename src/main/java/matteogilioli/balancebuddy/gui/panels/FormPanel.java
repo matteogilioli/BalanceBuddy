@@ -14,7 +14,6 @@ import java.util.Date;
 
 public class FormPanel extends GenericFormPanel {
     private static final String[] labels = {"Tipo", "Data", "Descrizione", "Importo"};
-    private JLabel errorMessage = new JLabel(" ");
     private final JComboBox<String> type;
     private final JTextField description;
     private final JFormattedTextField amount;
@@ -36,7 +35,7 @@ public class FormPanel extends GenericFormPanel {
 
     public void createGUI() {
         JComponent[] components = {type, datetime, description, amount};
-        super.populate(labels, components, errorMessage, addButton);
+        super.populate(labels, components, addButton);
     }
 
     public String getType() {
@@ -63,10 +62,9 @@ public class FormPanel extends GenericFormPanel {
         datetime.setValue(new Date());
         description.setText("");
         amount.setText("");
-        errorMessage.setText(" ");
     }
 
     public void setError(String error) {
-        errorMessage.setText(error);
+        JOptionPane.showMessageDialog(this, error, "Creazione fallita", JOptionPane.ERROR_MESSAGE);
     }
 }

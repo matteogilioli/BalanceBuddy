@@ -33,11 +33,11 @@ public class AddListener implements ActionListener {
         LocalDateTime datetime = form.getDatetime();
 
         if (description.isBlank() && amountString.isBlank())
-            form.setError("ERRORE: Descrizione ed importo mancanti");
+            form.setError("Descrizione ed importo mancanti");
         else if (description.isBlank())
-            form.setError("ERRORE: Descrizione mancante");
+            form.setError("Descrizione mancante");
         else if (amountString.isBlank())
-            form.setError("ERRORE: Importo mancante");
+            form.setError("Importo mancante");
         if (description.isBlank() || amountString.isBlank())
             return;
 
