@@ -7,7 +7,6 @@ import matteogilioli.balancebuddy.gui.spinner.SpinnerDateTime;
 import matteogilioli.balancebuddy.logic.Balance;
 
 import javax.swing.*;
-import java.awt.event.ActionListener;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
