@@ -8,7 +8,6 @@ public class FiltersPanel extends JPanel {
     private final JCheckBox filterCheckBox;
     private final JSpinner datetimeStart;
     private final JSpinner datetimeEnd;
-    private JLabel errorMessage = new JLabel(" ");
 
     public FiltersPanel() {
         super();
