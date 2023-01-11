@@ -1,9 +1,9 @@
-package matteogilioli.balancebuddy.gui.components.panels;
+package matteogilioli.balancebuddy.gui.panels;
 
-import matteogilioli.balancebuddy.gui.components.buttons.DeleteButton;
-import matteogilioli.balancebuddy.gui.components.buttons.listener.DeleteListener;
-import matteogilioli.balancebuddy.gui.components.table.BalanceTable;
-import matteogilioli.balancebuddy.gui.components.table.BalanceTableModel;
+import matteogilioli.balancebuddy.gui.buttons.DeleteButton;
+import matteogilioli.balancebuddy.gui.buttons.listener.DeleteListener;
+import matteogilioli.balancebuddy.gui.table.BalanceTable;
+import matteogilioli.balancebuddy.gui.table.BalanceTableModel;
 import matteogilioli.balancebuddy.logic.Balance;
 
 import javax.swing.*;

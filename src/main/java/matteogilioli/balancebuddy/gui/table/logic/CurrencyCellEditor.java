@@ -1,6 +1,6 @@
-package matteogilioli.balancebuddy.gui.components.table.logic;
+package matteogilioli.balancebuddy.gui.table.logic;
 
-import matteogilioli.balancebuddy.gui.logic.LocaleNumberFormatFactory;
+import matteogilioli.balancebuddy.gui.formatter.LocaleNumberFormatFactory;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,4 @@
-package matteogilioli.balancebuddy.gui.components.panels;
+package matteogilioli.balancebuddy.gui.panels;
 
 import matteogilioli.balancebuddy.logic.Balance;
 

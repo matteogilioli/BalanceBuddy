@@ -1,7 +1,7 @@
 package matteogilioli.balancebuddy.gui;
 
-import matteogilioli.balancebuddy.gui.components.panels.LeftPanel;
-import matteogilioli.balancebuddy.gui.components.panels.TablePanel;
+import matteogilioli.balancebuddy.gui.panels.LeftPanel;
+import matteogilioli.balancebuddy.gui.panels.TablePanel;
 import matteogilioli.balancebuddy.logic.Balance;
 
 import javax.swing.*;

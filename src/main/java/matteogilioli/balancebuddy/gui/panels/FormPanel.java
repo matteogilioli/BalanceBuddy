@@ -1,9 +1,9 @@
-package matteogilioli.balancebuddy.gui.components.panels;
+package matteogilioli.balancebuddy.gui.panels;
 
-import matteogilioli.balancebuddy.gui.components.buttons.AddButton;
-import matteogilioli.balancebuddy.gui.components.buttons.listener.AddListener;
-import matteogilioli.balancebuddy.gui.components.spinner.SpinnerDateTime;
-import matteogilioli.balancebuddy.gui.logic.LocaleNumberFormatFactory;
+import matteogilioli.balancebuddy.gui.buttons.AddButton;
+import matteogilioli.balancebuddy.gui.buttons.listener.AddListener;
+import matteogilioli.balancebuddy.gui.spinner.SpinnerDateTime;
+import matteogilioli.balancebuddy.gui.formatter.LocaleNumberFormatFactory;
 import matteogilioli.balancebuddy.logic.Balance;
 
 import javax.swing.*;

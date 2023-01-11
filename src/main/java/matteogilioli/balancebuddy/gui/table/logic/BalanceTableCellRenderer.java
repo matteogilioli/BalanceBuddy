@@ -1,6 +1,6 @@
-package matteogilioli.balancebuddy.gui.components.table.logic;
+package matteogilioli.balancebuddy.gui.table.logic;
 
-import matteogilioli.balancebuddy.gui.components.table.BalanceTableModel;
+import matteogilioli.balancebuddy.gui.table.BalanceTableModel;
 import matteogilioli.balancebuddy.logic.BalanceEntry;
 import matteogilioli.balancebuddy.logic.ExpenseEntry;
 import matteogilioli.balancebuddy.logic.IncomeEntry;

@@ -1,4 +1,4 @@
-package matteogilioli.balancebuddy.gui.components.spinner;
+package matteogilioli.balancebuddy.gui.spinner;
 
 import javax.swing.*;
 

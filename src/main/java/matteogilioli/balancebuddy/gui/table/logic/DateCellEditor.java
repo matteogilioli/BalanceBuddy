@@ -1,4 +1,4 @@
-package matteogilioli.balancebuddy.gui.components.table.logic;
+package matteogilioli.balancebuddy.gui.table.logic;
 
 import javax.swing.*;
 import java.awt.*;

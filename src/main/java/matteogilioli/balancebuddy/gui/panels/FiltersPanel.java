@@ -1,6 +1,6 @@
-package matteogilioli.balancebuddy.gui.components.panels;
+package matteogilioli.balancebuddy.gui.panels;
 
-import matteogilioli.balancebuddy.gui.components.spinner.SpinnerDate;
+import matteogilioli.balancebuddy.gui.spinner.SpinnerDate;
 
 import javax.swing.*;
 
