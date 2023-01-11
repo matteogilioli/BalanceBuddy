@@ -43,6 +43,7 @@ public class FormPanel extends JPanel {
             c.anchor = GridBagConstraints.LINE_END; c.gridx = 0; c.gridy = i + 1;
             c.insets = new Insets(5, 0, 0, 10);
             this.add(new JLabel(labels[i]), c);
+            c.insets = new Insets(5, 0, 0, 0);
             c.anchor = GridBagConstraints.LINE_START; c.gridx = 1;
             components[i].setPreferredSize(new Dimension(180, 30));
             this.add(components[i], c);
