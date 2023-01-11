@@ -15,12 +15,10 @@ public class TablePanel extends JPanel {
     private final JScrollPane tableScrollPane;
     private final JButton deleteButton;
     private final JLabel totalLabel;
-    private final Balance balance;
 
     public TablePanel(Balance balance) {
         super();
 
-        this.balance = balance;
         totalLabel = new JLabel();
         tableModel = new BalanceTableModel(balance, totalLabel);
         table = new BalanceTable(tableModel);

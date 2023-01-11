@@ -15,12 +15,12 @@ import java.util.Date;
 
 public class FormPanel extends GenericFormPanel {
     private static final String[] labels = {"Tipo", "Data", "Descrizione", "Importo"};
-    private static final int rows = labels.length;
     private JLabel errorMessage = new JLabel(" ");
     private final JComboBox<String> type;
     private final JTextField description;
     private final JFormattedTextField amount;
     private final JSpinner datetime;
+    public final JButton addButton;
 
     public FormPanel(Balance balance, TablePanel tablePanel) {
         super();
@@ -30,14 +30,14 @@ public class FormPanel extends GenericFormPanel {
         amount = new JFormattedTextField();
         amount.setFormatterFactory(new LocaleNumberFormatFactory());
         datetime = new SpinnerDateTime();
+        addButton = new AddButton(new AddListener(this, tablePanel, balance));
 
-        ActionListener addListener = new AddListener(this, tablePanel, balance);
-        createGUI(addListener);
+        createGUI();
     }
 
-    public void createGUI(ActionListener addListener) {
+    public void createGUI() {
         JComponent[] components = {type, datetime, description, amount};
-        super.populate(labels, components, errorMessage, new AddButton(addListener));
+        super.populate(labels, components, errorMessage, addButton);
     }
 
     public String getType() {
