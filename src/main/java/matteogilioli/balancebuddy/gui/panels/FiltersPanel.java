@@ -22,6 +22,6 @@ public class FiltersPanel extends GenericFormPanel {
 
     public void createGUI() {
         JComponent[] components = {filterCheckBox, datetimeStart, datetimeEnd};
-        this.populate(labels, components);
+        super.populate(labels, components);
     }
 }

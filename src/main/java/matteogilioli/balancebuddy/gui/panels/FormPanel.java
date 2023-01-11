@@ -37,7 +37,7 @@ public class FormPanel extends GenericFormPanel {
 
     public void createGUI(ActionListener addListener) {
         JComponent[] components = {type, datetime, description, amount};
-        this.populate(labels, components, errorMessage, new AddButton(addListener));
+        super.populate(labels, components, errorMessage, new AddButton(addListener));
     }
 
     public String getType() {
