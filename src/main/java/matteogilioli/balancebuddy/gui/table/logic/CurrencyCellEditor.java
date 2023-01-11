@@ -4,7 +4,6 @@ import matteogilioli.balancebuddy.logic.LocaleNumberFormatFactory;
 
 import javax.swing.*;
 import java.awt.*;
-import java.math.BigDecimal;
 
 public class CurrencyCellEditor extends DefaultCellEditor {
     private final JFormattedTextField doubleEditor;

@@ -5,8 +5,6 @@ import matteogilioli.balancebuddy.logic.BalanceEntry;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.TableCellRenderer;
-import java.awt.*;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
