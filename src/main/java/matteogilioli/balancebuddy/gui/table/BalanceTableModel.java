@@ -7,6 +7,9 @@ import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
@@ -68,7 +71,10 @@ public final class BalanceTableModel extends AbstractTableModel {
         BalanceEntry voce = balance.getEntries().get(rowIndex);
         switch (columnIndex) {
             case 0: // Data
-                voce.setDatetime((Date) aValue);
+                Date date = (Date) aValue;
+                Instant inst = date.toInstant();
+                ZoneId zone = ZoneId.systemDefault();
+                voce.setDatetime(LocalDateTime.ofInstant(inst, zone));
                 break;
             case 1: // Descrizione
                 voce.setDescription((String) aValue);

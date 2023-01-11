@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Locale;
 
@@ -30,7 +31,7 @@ public class AddListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String description = form.getDescription();
         String amountString = form.getAmount();
-        Date datetime = form.getDatetime();
+        LocalDateTime datetime = form.getDatetime();
 
         if (description.isBlank() && amountString.isBlank())
             form.setError("ERRORE: Descrizione ed importo mancanti");

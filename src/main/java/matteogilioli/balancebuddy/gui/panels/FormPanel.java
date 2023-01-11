@@ -7,6 +7,9 @@ import matteogilioli.balancebuddy.logic.Balance;
 
 import javax.swing.*;
 import java.awt.*;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 public class FormPanel extends JPanel {
@@ -66,8 +69,12 @@ public class FormPanel extends JPanel {
         return amount.getText();
     }
 
-    public Date getDatetime() {
-        return (Date) datetime.getValue();
+    public LocalDateTime getDatetime() {
+        Object obj = datetime.getValue();
+        Date date = (Date) obj;
+        Instant inst = date.toInstant();
+        ZoneId zone = ZoneId.systemDefault();
+        return LocalDateTime.ofInstant(inst, zone);
     }
 
     public void clear() {

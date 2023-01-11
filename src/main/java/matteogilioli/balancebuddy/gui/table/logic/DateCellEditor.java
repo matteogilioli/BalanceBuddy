@@ -2,6 +2,10 @@ package matteogilioli.balancebuddy.gui.table.logic;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 public class DateCellEditor extends DefaultCellEditor {
@@ -22,7 +26,7 @@ public class DateCellEditor extends DefaultCellEditor {
 
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-        spinner.setValue((Date) value);
+        spinner.setValue(Timestamp.valueOf((LocalDateTime) value));
         return spinner;
     }
 }
