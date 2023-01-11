@@ -1,4 +1,4 @@
-package matteogilioli.balancebuddy.gui.panels;
+package matteogilioli.balancebuddy.gui.components.panels;
 
 import javax.swing.*;
 import java.awt.*;

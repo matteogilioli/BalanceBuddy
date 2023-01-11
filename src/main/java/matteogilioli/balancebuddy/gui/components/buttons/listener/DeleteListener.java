@@ -1,6 +1,6 @@
 package matteogilioli.balancebuddy.gui.components.buttons.listener;
 
-import matteogilioli.balancebuddy.gui.panels.TablePanel;
+import matteogilioli.balancebuddy.gui.components.panels.TablePanel;
 import matteogilioli.balancebuddy.logic.Balance;
 
 import java.awt.event.ActionEvent;
