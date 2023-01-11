@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class FiltersPanel extends JPanel {
-    private static final String[] labels = {"Filtro date", "Da", "A"};
+    private static final String[] labels = {"Filtro date", "Dal giorno", "Al giorno"};
     private final JCheckBox filterCheckBox;
     private final JSpinner datetimeStart;
     private final JSpinner datetimeEnd;
@@ -16,11 +16,11 @@ public class FiltersPanel extends JPanel {
         filterCheckBox = new JCheckBox("Attiva");
 
         datetimeStart = new JSpinner(new SpinnerDateModel());
-        JSpinner.DateEditor dateEditorStart = new JSpinner.DateEditor(datetimeStart, "dd/MM/yyyy");
+        JSpinner.DateEditor dateEditorStart = new JSpinner.DateEditor(datetimeStart, "dd MMMM yyyy");
         datetimeStart.setEditor(dateEditorStart);
 
         datetimeEnd = new JSpinner(new SpinnerDateModel());
-        JSpinner.DateEditor dateEditorEnd = new JSpinner.DateEditor(datetimeEnd, "dd/MM/yyyy");
+        JSpinner.DateEditor dateEditorEnd = new JSpinner.DateEditor(datetimeEnd, "dd MMMM yyyy");
         datetimeEnd.setEditor(dateEditorEnd);
 
         this.setLayout(new GridBagLayout());
