@@ -8,14 +8,9 @@ import matteogilioli.balancebuddy.logic.IncomeEntry;
 
 import javax.swing.*;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public final class Main {
     private static final Balance balance = new Balance();

@@ -1,11 +1,8 @@
 package matteogilioli.balancebuddy.gui.table.logic;
 
 import javax.swing.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class DateCellRenderer extends BalanceTableCellRenderer {
     private final DateTimeFormatter formatter;

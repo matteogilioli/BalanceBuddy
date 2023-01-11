@@ -2,7 +2,6 @@ package matteogilioli.balancebuddy.logic;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public abstract class BalanceEntry {
     private String description;
