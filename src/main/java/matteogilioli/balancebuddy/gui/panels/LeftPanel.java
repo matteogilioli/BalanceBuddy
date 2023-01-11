@@ -29,7 +29,7 @@ public class LeftPanel extends JPanel {
         this.add(filtersPanel);
         this.add(Box.createVerticalStrut(40));
         this.add(titoli[1]);
-        this.add(Box.createVerticalStrut(5));
+        this.add(Box.createVerticalStrut(10));
         this.add(formPanel);
     }
  }
