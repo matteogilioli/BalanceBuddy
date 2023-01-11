@@ -3,7 +3,7 @@ package matteogilioli.balancebuddy.gui.panels;
 import matteogilioli.balancebuddy.gui.buttons.AddButton;
 import matteogilioli.balancebuddy.gui.buttons.listener.AddListener;
 import matteogilioli.balancebuddy.logic.Balance;
-import matteogilioli.balancebuddy.logic.LocaleNumberFormatFactory;
+import matteogilioli.balancebuddy.gui.logic.LocaleNumberFormatFactory;
 
 import javax.swing.*;
 import java.awt.*;
