@@ -1,13 +1,7 @@
 package matteogilioli.balancebuddy.gui.panels;
 
-import matteogilioli.balancebuddy.gui.buttons.AddButton;
-import matteogilioli.balancebuddy.gui.buttons.listener.AddListener;
-import matteogilioli.balancebuddy.gui.logic.LocaleNumberFormatFactory;
-import matteogilioli.balancebuddy.logic.Balance;
-
 import javax.swing.*;
 import java.awt.*;
-import java.util.Date;
 
 public class FiltersPanel extends JPanel {
     private static final String[] labels = {"Filtro date", "Da", "A"};

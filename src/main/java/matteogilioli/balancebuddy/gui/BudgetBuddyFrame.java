@@ -1,6 +1,5 @@
 package matteogilioli.balancebuddy.gui;
 
-import matteogilioli.balancebuddy.gui.panels.FormPanel;
 import matteogilioli.balancebuddy.gui.panels.LeftPanel;
 import matteogilioli.balancebuddy.gui.panels.TablePanel;
 import matteogilioli.balancebuddy.logic.Balance;
