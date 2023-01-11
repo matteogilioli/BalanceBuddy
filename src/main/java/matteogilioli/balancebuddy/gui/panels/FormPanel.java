@@ -1,12 +1,11 @@
 package matteogilioli.balancebuddy.gui.panels;
 
-import matteogilioli.balancebuddy.gui.components.buttons.AddButton;
-import matteogilioli.balancebuddy.gui.components.buttons.listener.AddListener;
-import matteogilioli.balancebuddy.gui.table.logic.CurrencyFilter;
+import matteogilioli.balancebuddy.gui.buttons.AddButton;
+import matteogilioli.balancebuddy.gui.buttons.listener.AddListener;
 import matteogilioli.balancebuddy.logic.Balance;
+import matteogilioli.balancebuddy.logic.LocaleNumberFormatFactory;
 
 import javax.swing.*;
-import javax.swing.text.AbstractDocument;
 import java.awt.*;
 import java.util.Date;
 
@@ -15,28 +14,24 @@ public class FormPanel extends JPanel {
     private static final int rows = labels.length;
     private JLabel errorMessage = new JLabel(" ");
     private final AddButton addButton;
-    private final JComboBox<String> type = new JComboBox<>("Entrata, Uscita".split(", "));
-    private final JTextField description = new JTextField();
-    private final JTextField amount = new JTextField();
-    private final JSpinner datetime = new JSpinner(new SpinnerDateModel());
+    private final JComboBox<String> type;
+    private final JTextField description;
+    private final JFormattedTextField amount;
+    private final JSpinner datetime;
 
     public FormPanel(Balance balance, TablePanel tablePanel) {
         super();
 
-        AbstractDocument doc = (AbstractDocument) amount.getDocument();
-        doc.setDocumentFilter(new CurrencyFilter());
-
-        this.setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
-
+        type = new JComboBox<>("Entrata, Uscita".split(", "));
+        description = new JTextField();
+        amount = new JFormattedTextField();
+        amount.setFormatterFactory(new LocaleNumberFormatFactory());
+        datetime = new JSpinner(new SpinnerDateModel());
         JSpinner.DateEditor dateEditor = new JSpinner.DateEditor(datetime, "dd/MM/yyyy HH:mm");
         datetime.setEditor(dateEditor);
 
-        type.setPreferredSize(new Dimension(180, 30));
-        datetime.setPreferredSize(new Dimension(180, 30));
-        description.setPreferredSize(new Dimension(180, 30));
-        amount.setPreferredSize(new Dimension(180, 30));
-
+        this.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0; c.gridy = 0; c.gridwidth = 2;
         errorMessage.setForeground(Color.RED);
         this.add(errorMessage, c);
@@ -49,6 +44,7 @@ public class FormPanel extends JPanel {
             c.insets = new Insets(5, 0, 0, 10);
             this.add(new JLabel(labels[i]), c);
             c.anchor = GridBagConstraints.LINE_START; c.gridx = 1;
+            components[i].setPreferredSize(new Dimension(180, 30));
             this.add(components[i], c);
         }
 
@@ -66,7 +62,7 @@ public class FormPanel extends JPanel {
     }
 
     public String getAmount() {
-        return amount.getText().replace(",", ".");
+        return amount.getText();
     }
 
     public Date getDatetime() {

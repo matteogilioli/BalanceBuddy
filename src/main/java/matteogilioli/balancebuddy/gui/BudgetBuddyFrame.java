@@ -5,6 +5,7 @@ import matteogilioli.balancebuddy.gui.panels.TablePanel;
 import matteogilioli.balancebuddy.logic.Balance;
 
 import javax.swing.*;
+import java.awt.*;
 
 public final class BudgetBuddyFrame extends JFrame {
     private final TablePanel tablePanel;
@@ -20,12 +21,11 @@ public final class BudgetBuddyFrame extends JFrame {
         formPanel = new FormPanel(balance, tablePanel);
 
         this.setTitle("BalanceBuddy");
-        this.setResizable(false);
 
         this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
         this.add(Box.createVerticalStrut(20));
 
-        JPanel main = new JPanel();
+        JPanel main = new JPanel(new GridBagLayout());
         main.add(Box.createHorizontalStrut(20));
         main.add(formPanel);
         main.add(tablePanel);
@@ -36,5 +36,6 @@ public final class BudgetBuddyFrame extends JFrame {
         this.pack();
 
         this.pack();
+        this.setMinimumSize(this.getSize());
     }
 }

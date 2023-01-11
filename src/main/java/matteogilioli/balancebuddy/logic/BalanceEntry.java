@@ -1,19 +1,20 @@
 package matteogilioli.balancebuddy.logic;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public abstract class BalanceEntry {
     private String description;
-    private double amount;
+    private BigDecimal amount;
     private Date datetime;
 
-    public BalanceEntry(String description, double amount) {
+    public BalanceEntry(String description, BigDecimal amount) {
         this.description = description;
         this.amount = amount;
         this.datetime = new Date();
     }
 
-    public BalanceEntry(String description, double amount, Date datetime) {
+    public BalanceEntry(String description, BigDecimal amount, Date datetime) {
         this.description = description;
         this.amount = amount;
         this.datetime = datetime;
@@ -23,7 +24,7 @@ public abstract class BalanceEntry {
         return description;
     }
 
-    public final double getAmount() {
+    public final BigDecimal getAmount() {
         return amount;
     }
 
@@ -35,7 +36,7 @@ public abstract class BalanceEntry {
         this.description = description;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 

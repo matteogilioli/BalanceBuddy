@@ -1,4 +1,4 @@
-package matteogilioli.balancebuddy.gui.components.buttons.listener;
+package matteogilioli.balancebuddy.gui.buttons.listener;
 
 import matteogilioli.balancebuddy.gui.panels.FormPanel;
 import matteogilioli.balancebuddy.gui.panels.TablePanel;
@@ -9,7 +9,11 @@ import matteogilioli.balancebuddy.logic.IncomeEntry;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.Date;
+import java.util.Locale;
 
 public class AddListener implements ActionListener {
     private final FormPanel form;
@@ -37,7 +41,13 @@ public class AddListener implements ActionListener {
         if (description.isBlank() || amountString.isBlank())
             return;
 
-        Double amount = Double.parseDouble(amountString);
+        NumberFormat nf = NumberFormat.getInstance(Locale.getDefault());
+        BigDecimal amount = null;
+        try {
+            amount = new BigDecimal(nf.parse(amountString).toString());
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
 
         BalanceEntry entry = switch (form.getType()) {
             case "Entrata" -> new IncomeEntry(description, amount, datetime);
@@ -47,6 +57,6 @@ public class AddListener implements ActionListener {
 
         form.clear();
         balance.addEntry(entry);
-        tablePanel.updateTable();
+        tablePanel.fireTableDataChanged();
     }
 }

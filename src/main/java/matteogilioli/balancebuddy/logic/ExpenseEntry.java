@@ -1,16 +1,14 @@
 package matteogilioli.balancebuddy.logic;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public final class ExpenseEntry extends BalanceEntry {
-    public ExpenseEntry(String description, double amount) {
-        super(description, -amount);
+    public ExpenseEntry(String description, BigDecimal amount) {
+        super(description, amount.negate());
     }
-    public ExpenseEntry(String description, double amount, Date datetime) {
-        super(description, -amount, datetime);
-    }
-    @Override
-    public void setAmount(double amount) {
-        super.setAmount(amount);
+
+    public ExpenseEntry(String description, BigDecimal amount, Date datetime) {
+        super(description, amount.negate(), datetime);
     }
 }

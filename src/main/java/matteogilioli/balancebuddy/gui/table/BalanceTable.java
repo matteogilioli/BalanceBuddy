@@ -20,12 +20,8 @@ public class BalanceTable extends JTable {
         dateColumn.setCellEditor(new DateCellEditor());
         dateColumn.setCellRenderer(new DateCellRenderer());
 
-        amountColumn.setCellEditor(new DoubleCellEditor());
+        amountColumn.setCellEditor(new CurrencyCellEditor());
         amountColumn.setCellRenderer(new CurrencyCellRenderer());
-    }
-
-    public void updateTable() {
-        model.fireTableDataChanged();
     }
 
     public int[] getSelectedIndexes() {

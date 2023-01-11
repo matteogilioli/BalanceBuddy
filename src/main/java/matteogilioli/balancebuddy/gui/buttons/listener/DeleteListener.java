@@ -1,4 +1,4 @@
-package matteogilioli.balancebuddy.gui.components.buttons.listener;
+package matteogilioli.balancebuddy.gui.buttons.listener;
 
 import matteogilioli.balancebuddy.gui.panels.TablePanel;
 import matteogilioli.balancebuddy.logic.Balance;
@@ -19,7 +19,7 @@ public class DeleteListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         int[] selectedIndexes = tablePanel.getTable().getSelectedIndexes();
         balance.removeEntries(selectedIndexes);
-        tablePanel.updateTable();
+        tablePanel.fireTableDataChanged();
     }
 }
 

@@ -7,6 +7,7 @@ import matteogilioli.balancebuddy.logic.ExpenseEntry;
 import matteogilioli.balancebuddy.logic.IncomeEntry;
 
 import javax.swing.*;
+import java.math.BigDecimal;
 
 public final class Main {
     private static final Balance balance = new Balance();
@@ -15,12 +16,12 @@ public final class Main {
         FlatMacLightLaf.setup();
 
         // Voci di esempio
-        balance.addEntry(new ExpenseEntry("Netflix", 14.99));
-        balance.addEntry(new ExpenseEntry("Spesa", 50));
-        balance.addEntry(new IncomeEntry("Stipendio", 800));
-        balance.addEntry(new ExpenseEntry("Mancia", 50));
-        balance.addEntry(new ExpenseEntry("Ristorante Oriente", 14.99));
-        balance.addEntry(new IncomeEntry("Benzina", 60));
+        balance.addEntry(new ExpenseEntry("Netflix", new BigDecimal(14.99)));
+        balance.addEntry(new ExpenseEntry("Spesa", new BigDecimal(50)));
+        balance.addEntry(new IncomeEntry("Stipendio", new BigDecimal(800)));
+        balance.addEntry(new ExpenseEntry("Mancia", new BigDecimal(50)));
+        balance.addEntry(new ExpenseEntry("Ristorante Oriente", new BigDecimal(14.99)));
+        balance.addEntry(new IncomeEntry("Benzina", new BigDecimal(60)));
 
         BudgetBuddyFrame f = new BudgetBuddyFrame(balance);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

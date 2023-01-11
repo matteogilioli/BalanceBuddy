@@ -1,12 +1,13 @@
 package matteogilioli.balancebuddy.logic;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public final class IncomeEntry extends BalanceEntry {
-    public IncomeEntry(String description, double amount) {
+    public IncomeEntry(String description, BigDecimal amount) {
         super(description, amount);
     }
-    public IncomeEntry(String description, double amount, Date datetime) {
+    public IncomeEntry(String description, BigDecimal amount, Date datetime) {
         super(description, amount, datetime);
     }
 }
