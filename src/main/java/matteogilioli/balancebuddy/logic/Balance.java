@@ -4,23 +4,23 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public final class Balance {
-    private final ArrayList<BalanceEntry> entries = new ArrayList<>();
-    private BigDecimal totalBalance = BigDecimal.valueOf(0);
+    private static final ArrayList<BalanceEntry> entries = new ArrayList<>();
+    private static BigDecimal totalBalance = BigDecimal.valueOf(0);
 
-    public void addEntry(BalanceEntry entry) {
+    public static void addEntry(BalanceEntry entry) {
         entries.add(entry);
         totalBalance = totalBalance.add(entry.getAmount());
     }
 
-    public BigDecimal getTotal() {
+    public static BigDecimal getTotal() {
         return totalBalance;
     }
 
-    public ArrayList<BalanceEntry> getEntries() {
+    public static ArrayList<BalanceEntry> getEntries() {
         return entries;
     }
 
-    public void removeEntries(int[] indexesToRemove) {
+    public static void removeEntries(int[] indexesToRemove) {
         for (int i = indexesToRemove.length - 1; i >= 0; i--) {
             BalanceEntry entry = entries.get(indexesToRemove[i]);
             totalBalance = totalBalance.subtract(entry.getAmount());
@@ -28,7 +28,7 @@ public final class Balance {
         }
     }
 
-    public void editAmount(int index, BigDecimal newAmount) {
+    public static void editAmount(int index, BigDecimal newAmount) {
         BalanceEntry entry = entries.get(index);
         totalBalance = totalBalance.subtract(entry.getAmount());
 

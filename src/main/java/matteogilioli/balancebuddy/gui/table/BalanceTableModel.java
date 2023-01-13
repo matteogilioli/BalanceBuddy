@@ -15,17 +15,15 @@ import java.util.Date;
 import java.util.Locale;
 
 public final class BalanceTableModel extends AbstractTableModel {
-    private final Balance balance;
     private JLabel totalLabel;
 
-    public BalanceTableModel(Balance balance, JLabel totalLabel) {
-        this.balance = balance;
+    public BalanceTableModel(JLabel totalLabel) {
         this.totalLabel = totalLabel;
     }
 
     @Override
     public int getRowCount() {
-        return balance.getEntries().size();
+        return Balance.getEntries().size();
     }
 
     @Override
@@ -49,7 +47,7 @@ public final class BalanceTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        BalanceEntry voce = balance.getEntries().get(rowIndex);
+        BalanceEntry voce = Balance.getEntries().get(rowIndex);
         return switch (columnIndex) {
             case 0: // Data
                 yield voce.getDatetime();
@@ -68,7 +66,7 @@ public final class BalanceTableModel extends AbstractTableModel {
 
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        BalanceEntry voce = balance.getEntries().get(rowIndex);
+        BalanceEntry voce = Balance.getEntries().get(rowIndex);
         switch (columnIndex) {
             case 0: // Data
                 Date date = (Date) aValue;
@@ -80,20 +78,20 @@ public final class BalanceTableModel extends AbstractTableModel {
                 voce.setDescription((String) aValue);
                 break;
             case 2: // Importo
-                balance.editAmount(rowIndex, new BigDecimal(((Number) aValue).doubleValue()));
-                fireTableDataChanged();
+                Balance.editAmount(rowIndex, new BigDecimal(((Number) aValue).doubleValue()));
+                refresh();
                 break;
         }
     }
 
-    public void fireTableDataChanged() {
+    public void refresh() {
         super.fireTableDataChanged();
-        BigDecimal total = balance.getTotal();
+        BigDecimal total = Balance.getTotal();
         String totalText = NumberFormat.getCurrencyInstance(Locale.getDefault()).format(total);
         totalLabel.setText("Bilancio Totale: " + totalText);
     }
 
     public ArrayList<BalanceEntry> getEntries() {
-        return balance.getEntries();
+        return Balance.getEntries();
     }
 }

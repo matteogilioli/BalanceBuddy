@@ -1,7 +1,8 @@
 package matteogilioli.balancebuddy;
 
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
-import matteogilioli.balancebuddy.gui.BudgetBuddyFrame;
+import matteogilioli.balancebuddy.gui.Application;
+import matteogilioli.balancebuddy.gui.window.BudgetBuddyFrame;
 import matteogilioli.balancebuddy.logic.Balance;
 import matteogilioli.balancebuddy.logic.ExpenseEntry;
 import matteogilioli.balancebuddy.logic.IncomeEntry;
@@ -13,25 +14,24 @@ import java.time.ZoneOffset;
 import java.util.Random;
 
 public final class Main {
-    private static final Balance balance = new Balance();
-
     public static void main(String[] args) {
         FlatMacLightLaf.setup();
 
         populate(); // Examples
 
-        BudgetBuddyFrame f = new BudgetBuddyFrame(balance);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setVisible(true);
+        SwingUtilities.invokeLater(() -> {
+            BudgetBuddyFrame f = new BudgetBuddyFrame();
+            Application.setMainFrame(f);
+        });
     }
 
     public static void populate() {
-        balance.addEntry(new ExpenseEntry("Netflix", new BigDecimal(14.99), randomDateTime()));
-        balance.addEntry(new ExpenseEntry("Spesa", new BigDecimal(50), randomDateTime()));
-        balance.addEntry(new IncomeEntry("Stipendio", new BigDecimal(800), randomDateTime()));
-        balance.addEntry(new ExpenseEntry("Mancia", new BigDecimal(50), randomDateTime()));
-        balance.addEntry(new ExpenseEntry("Ristorante Oriente", new BigDecimal(14.99), randomDateTime()));
-        balance.addEntry(new IncomeEntry("Benzina", new BigDecimal(60), randomDateTime()));
+        Balance.addEntry(new ExpenseEntry("Netflix", new BigDecimal(14.99), randomDateTime()));
+        Balance.addEntry(new ExpenseEntry("Spesa", new BigDecimal(50), randomDateTime()));
+        Balance.addEntry(new IncomeEntry("Stipendio", new BigDecimal(800), randomDateTime()));
+        Balance.addEntry(new ExpenseEntry("Mancia", new BigDecimal(50), randomDateTime()));
+        Balance.addEntry(new ExpenseEntry("Ristorante Oriente", new BigDecimal(14.99), randomDateTime()));
+        Balance.addEntry(new IncomeEntry("Benzina", new BigDecimal(60), randomDateTime()));
     }
 
     public static LocalDateTime randomDateTime() {

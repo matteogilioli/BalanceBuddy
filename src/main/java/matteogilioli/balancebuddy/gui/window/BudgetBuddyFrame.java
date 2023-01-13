@@ -1,25 +1,25 @@
-package matteogilioli.balancebuddy.gui;
+package matteogilioli.balancebuddy.gui.window;
 
-import matteogilioli.balancebuddy.gui.panels.LeftPanel;
-import matteogilioli.balancebuddy.gui.panels.TablePanel;
-import matteogilioli.balancebuddy.logic.Balance;
+import matteogilioli.balancebuddy.gui.menu.MyMenuBar;
 
 import javax.swing.*;
 import java.awt.*;
 
-public final class BudgetBuddyFrame extends JFrame {
-    private final JPanel tablePanel;
-    private final JPanel leftPanel;
-    private final Balance balance;
+public class BudgetBuddyFrame extends JFrame {
+    private JPanel tablePanel;
+    private JPanel filtersPanel;
 
-    public BudgetBuddyFrame(Balance balance) {
+    public BudgetBuddyFrame() {
         super();
 
-        this.balance = balance;
+        this.setJMenuBar(new MyMenuBar());
+        tablePanel = new TablePanel();
+        filtersPanel = new FiltersPanel();
 
-        tablePanel = new TablePanel(balance);
-        leftPanel = new LeftPanel(balance, (TablePanel) tablePanel);
+        createGUI();
+    }
 
+    private void createGUI() {
         this.setTitle("BalanceBuddy");
 
         this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
@@ -27,7 +27,7 @@ public final class BudgetBuddyFrame extends JFrame {
 
         JPanel main = new JPanel(new GridBagLayout());
         main.add(Box.createHorizontalStrut(30));
-        main.add(leftPanel);
+        main.add(filtersPanel);
         main.add(Box.createHorizontalStrut(20));
         main.add(tablePanel);
         main.add(Box.createHorizontalStrut(20));
@@ -35,8 +35,9 @@ public final class BudgetBuddyFrame extends JFrame {
 
         this.add(Box.createVerticalStrut(20));
         this.pack();
-
-        this.pack();
         this.setMinimumSize(this.getSize());
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
     }
 }

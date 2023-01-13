@@ -1,10 +1,10 @@
-package matteogilioli.balancebuddy.gui.panels;
+package matteogilioli.balancebuddy.gui.window;
 
+import matteogilioli.balancebuddy.gui.Application;
 import matteogilioli.balancebuddy.gui.buttons.DeleteButton;
 import matteogilioli.balancebuddy.gui.buttons.listener.DeleteListener;
 import matteogilioli.balancebuddy.gui.table.BalanceTable;
 import matteogilioli.balancebuddy.gui.table.BalanceTableModel;
-import matteogilioli.balancebuddy.logic.Balance;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,25 +16,26 @@ public class TablePanel extends JPanel {
     private final JButton deleteButton;
     private final JLabel totalLabel;
 
-    public TablePanel(Balance balance) {
+    public TablePanel() {
         super();
 
         totalLabel = new JLabel();
-        tableModel = new BalanceTableModel(balance, totalLabel);
+        tableModel = new BalanceTableModel(totalLabel);
+        Application.setTableModel(tableModel);
         table = new BalanceTable(tableModel);
         tableScrollPane = new JScrollPane(table);
-        deleteButton = new DeleteButton(new DeleteListener(balance, this));
+        deleteButton = new DeleteButton(new DeleteListener(this));
 
         createGUI();
     }
 
-    public void createGUI() {
+    private void createGUI() {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new BorderLayout());
 
-        fireTableDataChanged();
+        Application.refreshData();
 
         bottomPanel.add(deleteButton, BorderLayout.WEST);
         bottomPanel.add(totalLabel, BorderLayout.EAST);
@@ -46,9 +47,5 @@ public class TablePanel extends JPanel {
 
     public BalanceTable getTable() {
         return table;
-    }
-
-    public void fireTableDataChanged() {
-        tableModel.fireTableDataChanged();
     }
 }

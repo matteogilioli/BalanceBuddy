@@ -1,4 +1,4 @@
-package matteogilioli.balancebuddy.gui.formatter;
+package matteogilioli.balancebuddy.gui.components;
 
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;

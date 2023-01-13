@@ -1,7 +1,7 @@
 package matteogilioli.balancebuddy.gui.buttons.listener;
 
-import matteogilioli.balancebuddy.gui.panels.FormPanel;
-import matteogilioli.balancebuddy.gui.panels.TablePanel;
+import matteogilioli.balancebuddy.gui.Application;
+import matteogilioli.balancebuddy.gui.window.FormDialog;
 import matteogilioli.balancebuddy.logic.Balance;
 import matteogilioli.balancebuddy.logic.BalanceEntry;
 import matteogilioli.balancebuddy.logic.ExpenseEntry;
@@ -16,14 +16,10 @@ import java.time.LocalDateTime;
 import java.util.Locale;
 
 public class AddListener implements ActionListener {
-    private final FormPanel form;
-    private final TablePanel tablePanel;
-    private final Balance balance;
+    private final FormDialog form;
 
-    public AddListener(FormPanel form, TablePanel tablePanel, Balance balance) {
+    public AddListener(FormDialog form) {
         this.form = form;
-        this.tablePanel = tablePanel;
-        this.balance = balance;
     }
 
     @Override
@@ -49,14 +45,14 @@ public class AddListener implements ActionListener {
             ex.printStackTrace();
         }
 
-        BalanceEntry entry = switch (form.getType()) {
+        BalanceEntry entry = switch (form.getSelectedType()) {
             case "Entrata" -> new IncomeEntry(description, amount, datetime);
             case "Uscita" -> new ExpenseEntry(description, amount, datetime);
-            default -> throw new IllegalStateException("Unexpected value: " + form.getType());
+            default -> throw new IllegalStateException("Unexpected value: " + form.getSelectedType());
         };
 
-        form.clear();
-        balance.addEntry(entry);
-        tablePanel.fireTableDataChanged();
+        form.dispose();
+        Balance.addEntry(entry);
+        Application.refreshData();
     }
 }
