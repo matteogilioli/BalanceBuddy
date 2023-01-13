@@ -1,15 +1,15 @@
 package matteogilioli.balancebuddy.view.table.date;
 
-import matteogilioli.balancebuddy.view.table.BalanceTableCellRenderer;
+import matteogilioli.balancebuddy.view.table.CellColor;
 
 import javax.swing.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class DateCellRenderer extends BalanceTableCellRenderer {
+public class DateCellColor extends CellColor {
     private final DateTimeFormatter formatter;
 
-    public DateCellRenderer() {
+    public DateCellColor() {
         formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
     }
 

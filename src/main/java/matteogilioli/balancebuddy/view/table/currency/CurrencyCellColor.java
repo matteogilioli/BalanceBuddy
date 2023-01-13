@@ -1,15 +1,15 @@
 package matteogilioli.balancebuddy.view.table.currency;
 
-import matteogilioli.balancebuddy.view.table.BalanceTableCellRenderer;
+import matteogilioli.balancebuddy.view.table.CellColor;
 
 import javax.swing.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class CurrencyCellRenderer extends BalanceTableCellRenderer {
-    private NumberFormat formatter;
+public class CurrencyCellColor extends CellColor {
+    private final NumberFormat formatter;
 
-    public CurrencyCellRenderer() {
+    public CurrencyCellColor() {
         formatter = NumberFormat.getCurrencyInstance(Locale.getDefault());
         this.setHorizontalAlignment(JLabel.RIGHT);
     }

@@ -9,9 +9,9 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 
-public class BalanceTableCellRenderer extends DefaultTableCellRenderer {
-    private static final Color expenseColor = new Color(255, 121, 97);
-    private static final Color incomeColor = new Color(128, 226, 126);
+public class CellColor extends DefaultTableCellRenderer {
+    private static final Color expenseColor = new Color(255, 97, 72, 150);
+    private static final Color incomeColor = new Color(128, 226, 126, 150);
 
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
