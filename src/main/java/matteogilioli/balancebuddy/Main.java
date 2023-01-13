@@ -1,11 +1,11 @@
 package matteogilioli.balancebuddy;
 
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
-import matteogilioli.balancebuddy.gui.Application;
-import matteogilioli.balancebuddy.gui.window.BudgetBuddyFrame;
-import matteogilioli.balancebuddy.logic.Balance;
-import matteogilioli.balancebuddy.logic.ExpenseEntry;
-import matteogilioli.balancebuddy.logic.IncomeEntry;
+import matteogilioli.balancebuddy.controller.Application;
+import matteogilioli.balancebuddy.view.BudgetBuddyFrame;
+import matteogilioli.balancebuddy.model.Balance;
+import matteogilioli.balancebuddy.model.ExpenseEntry;
+import matteogilioli.balancebuddy.model.IncomeEntry;
 
 import javax.swing.*;
 import java.math.BigDecimal;
