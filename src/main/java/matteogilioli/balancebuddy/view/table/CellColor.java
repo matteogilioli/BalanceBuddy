@@ -12,7 +12,7 @@ import java.awt.*;
 public class CellColor extends DefaultTableCellRenderer {
     private static final Color expenseColor = new Color(255, 97, 72, 150);
     private static final Color incomeColor = new Color(128, 226, 126, 150);
-    private static final Color selectionColor = new Color(0, 85, 255);
+    private static final Color selectionColor = new Color(40, 100, 228);
 
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
