@@ -8,12 +8,6 @@ public abstract class BalanceEntry {
     private BigDecimal amount;
     private LocalDateTime datetime;
 
-    public BalanceEntry(String description, BigDecimal amount) {
-        this.description = description;
-        this.amount = amount;
-        this.datetime = LocalDateTime.now();
-    }
-
     public BalanceEntry(String description, BigDecimal amount, LocalDateTime datetime) {
         this.description = description;
         this.amount = amount;

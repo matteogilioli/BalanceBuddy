@@ -22,25 +22,14 @@ public class DateRowFilter extends RowFilter<BalanceTableModel, Integer> {
         int row = entry.getIdentifier();
         LocalDate date = ((LocalDateTime) model.getValueAt(row, 0)).toLocalDate();
 
-        switch (filterType) {
-            case ALL:
-                return  true;
-            case YEAR:
-                return  date.getYear() == startDate.getYear();
-            case MONTH:
-                return  date.getMonth() == startDate.getMonth() &&
-                        date.getYear() == startDate.getYear();
-            case WEEK:
-                return  date.get(WeekFields.ISO.weekOfWeekBasedYear()) == startDate.get(WeekFields.ISO.weekOfWeekBasedYear()) &&
-                        date.getYear() == startDate.getYear();
-            case DAY:
-                return  date.isEqual(startDate);
-            case CUSTOM:
-                return  (date.isEqual(startDate) || date.isAfter(startDate)) &&
-                        (date.isEqual(endDate) || date.isBefore(endDate));
-            default:
-                return false;
-        }
+        return switch (filterType) {
+            case ALL -> true;
+            case YEAR -> date.getYear() == startDate.getYear();
+            case MONTH -> date.getMonth() == startDate.getMonth() && date.getYear() == startDate.getYear();
+            case WEEK -> date.get(WeekFields.ISO.weekOfWeekBasedYear()) == startDate.get(WeekFields.ISO.weekOfWeekBasedYear()) && date.getYear() == startDate.getYear();
+            case DAY -> date.isEqual(startDate);
+            case CUSTOM -> (date.isEqual(startDate) || date.isAfter(startDate)) && (date.isEqual(endDate) || date.isBefore(endDate));
+        };
     }
 
     public void setFilter(FilterType filterType, LocalDate startDate, LocalDate endDate) {

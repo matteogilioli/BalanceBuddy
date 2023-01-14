@@ -42,11 +42,11 @@ public class AddListener implements ActionListener {
             return;
 
         NumberFormat nf = NumberFormat.getInstance(Locale.getDefault());
-        BigDecimal amount = null;
+        BigDecimal amount;
         try {
             amount = new BigDecimal(nf.parse(amountString).toString());
         } catch (ParseException ex) {
-            ex.printStackTrace();
+            throw new RuntimeException(ex);
         }
 
         BalanceEntry entry = switch (type) {

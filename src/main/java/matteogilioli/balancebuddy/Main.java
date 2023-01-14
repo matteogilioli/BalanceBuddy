@@ -18,18 +18,16 @@ public final class Main {
 
         populate(); // Examples
 
-        SwingUtilities.invokeLater(() -> {
-            BudgetBuddyFrame f = new BudgetBuddyFrame();
-        });
+        SwingUtilities.invokeLater(BudgetBuddyFrame::new);
     }
 
     public static void populate() {
-        Balance.addEntry(new ExpenseEntry("Netflix", new BigDecimal(14.99), randomDateTime()));
-        Balance.addEntry(new ExpenseEntry("Spesa", new BigDecimal(50), randomDateTime()));
-        Balance.addEntry(new IncomeEntry("Stipendio", new BigDecimal(800), randomDateTime()));
-        Balance.addEntry(new ExpenseEntry("Mancia", new BigDecimal(50), randomDateTime()));
-        Balance.addEntry(new ExpenseEntry("Ristorante Oriente", new BigDecimal(14.99), randomDateTime()));
-        Balance.addEntry(new IncomeEntry("Benzina", new BigDecimal(60), randomDateTime()));
+        Balance.addEntry(new ExpenseEntry("Netflix", BigDecimal.valueOf(14.99), randomDateTime()));
+        Balance.addEntry(new ExpenseEntry("Spesa", BigDecimal.valueOf(50), randomDateTime()));
+        Balance.addEntry(new IncomeEntry("Stipendio", BigDecimal.valueOf(800), randomDateTime()));
+        Balance.addEntry(new ExpenseEntry("Mancia", BigDecimal.valueOf(50), randomDateTime()));
+        Balance.addEntry(new ExpenseEntry("Ristorante Oriente", BigDecimal.valueOf(14.99), randomDateTime()));
+        Balance.addEntry(new IncomeEntry("Benzina", BigDecimal.valueOf(60), randomDateTime()));
     }
 
     public static LocalDateTime randomDateTime() {
