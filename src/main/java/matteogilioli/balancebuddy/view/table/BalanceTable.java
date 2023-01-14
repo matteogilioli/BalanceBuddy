@@ -15,10 +15,13 @@ public class BalanceTable extends JTable {
     private final TableRowSorter<BalanceTableModel> sorter;
     private final DateRowFilter filter;
 
-    public BalanceTable(BalanceTableModel model) {
-        super(model);
+    public BalanceTable() {
+        super();
 
+        BalanceTableModel model = new BalanceTableModel(this);
+        this.setModel(model);
         this.setDefaultRenderer(Object.class, new CellColor());
+
         sorter = new TableRowSorter<>(model);
         filter = new DateRowFilter();
         sorter.setRowFilter(filter);

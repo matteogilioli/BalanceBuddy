@@ -2,23 +2,22 @@ package matteogilioli.balancebuddy.controller.table;
 
 import matteogilioli.balancebuddy.model.Balance;
 import matteogilioli.balancebuddy.model.BalanceEntry;
+import matteogilioli.balancebuddy.view.table.BalanceTable;
 
-import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import java.math.BigDecimal;
-import java.text.NumberFormat;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
 
 public final class BalanceTableModel extends AbstractTableModel {
-    private JLabel totalLabel;
+    private final BalanceTable table;
 
-    public BalanceTableModel(JLabel totalLabel) {
-        this.totalLabel = totalLabel;
+    public BalanceTableModel(BalanceTable table) {
+        super();
+        this.table = table;
     }
 
     @Override
@@ -68,27 +67,24 @@ public final class BalanceTableModel extends AbstractTableModel {
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         BalanceEntry voce = Balance.getEntries().get(rowIndex);
         switch (columnIndex) {
-            case 0: // Data
+            case 0 -> { // Data
                 Date date = (Date) aValue;
                 Instant inst = date.toInstant();
                 ZoneId zone = ZoneId.systemDefault();
                 voce.setDatetime(LocalDateTime.ofInstant(inst, zone));
-                break;
-            case 1: // Descrizione
-                voce.setDescription((String) aValue);
-                break;
-            case 2: // Importo
-                Balance.editAmount(rowIndex, new BigDecimal(((Number) aValue).doubleValue()));
-                refresh();
-                break;
+            }
+            case 1 -> // Descrizione
+                    voce.setDescription((String) aValue);
+            case 2 -> // Importo
+                    Balance.editAmount(rowIndex, BigDecimal.valueOf(((Number) aValue).doubleValue()));
         }
+
+        refresh();
     }
 
     public void refresh() {
         super.fireTableDataChanged();
-        BigDecimal total = Balance.getTotal();
-        String totalText = NumberFormat.getCurrencyInstance(Locale.getDefault()).format(total);
-        totalLabel.setText("Bilancio Totale: " + totalText);
+        table.refreshSort();
     }
 
     public ArrayList<BalanceEntry> getEntries() {

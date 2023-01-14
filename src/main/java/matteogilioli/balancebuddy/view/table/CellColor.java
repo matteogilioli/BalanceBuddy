@@ -12,6 +12,7 @@ import java.awt.*;
 public class CellColor extends DefaultTableCellRenderer {
     private static final Color expenseColor = new Color(255, 97, 72, 150);
     private static final Color incomeColor = new Color(128, 226, 126, 150);
+    private static final Color selectionColor = new Color(0, 85, 255);
 
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -20,7 +21,13 @@ public class CellColor extends DefaultTableCellRenderer {
         BalanceTableModel model = (BalanceTableModel) table.getModel();
         BalanceEntry entry = model.getEntries().get(row);
 
-        if (!isSelected) {
+        setBorder(noFocusBorder);
+
+        if (isSelected) {
+            c.setBackground(selectionColor);
+            c.setForeground(Color.WHITE);
+        } else {
+            c.setForeground(Color.BLACK);
             if (entry instanceof ExpenseEntry)
                 c.setBackground(expenseColor);
             else if (entry instanceof IncomeEntry)
