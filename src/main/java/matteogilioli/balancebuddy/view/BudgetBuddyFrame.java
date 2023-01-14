@@ -7,15 +7,15 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BudgetBuddyFrame extends JFrame {
-    private JPanel tablePanel;
-    private JPanel filtersPanel;
+    private TablePanel tablePanel;
+    private FiltersPanel filtersPanel;
 
     public BudgetBuddyFrame() {
         super();
 
-        this.setJMenuBar(new MenuBar());
         tablePanel = new TablePanel();
-        filtersPanel = new FiltersPanel();
+        filtersPanel = new FiltersPanel(tablePanel.getTable());
+        this.setJMenuBar(new MenuBar(tablePanel.getTable()));
 
         createGUI();
     }

@@ -1,11 +1,12 @@
 package matteogilioli.balancebuddy.controller.actions;
 
-import matteogilioli.balancebuddy.controller.Application;
-import matteogilioli.balancebuddy.view.FormDialog;
+import matteogilioli.balancebuddy.controller.table.BalanceTableModel;
 import matteogilioli.balancebuddy.model.Balance;
 import matteogilioli.balancebuddy.model.BalanceEntry;
 import matteogilioli.balancebuddy.model.ExpenseEntry;
 import matteogilioli.balancebuddy.model.IncomeEntry;
+import matteogilioli.balancebuddy.view.FormDialog;
+import matteogilioli.balancebuddy.view.table.BalanceTable;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,9 +18,11 @@ import java.util.Locale;
 
 public class AddListener implements ActionListener {
     private final FormDialog form;
+    private final BalanceTable table;
 
-    public AddListener(FormDialog form) {
+    public AddListener(FormDialog form, BalanceTable table) {
         this.form = form;
+        this.table = table;
     }
 
     @Override
@@ -54,6 +57,6 @@ public class AddListener implements ActionListener {
 
         form.dispose();
         Balance.addEntry(entry);
-        Application.refreshData();
+        ((BalanceTableModel) table.getModel()).refresh();
     }
 }

@@ -1,17 +1,15 @@
 package matteogilioli.balancebuddy.view;
 
-import matteogilioli.balancebuddy.controller.Application;
-import matteogilioli.balancebuddy.view.components.AddButton;
+import matteogilioli.balancebuddy.controller.Utility;
 import matteogilioli.balancebuddy.controller.actions.AddListener;
-import matteogilioli.balancebuddy.view.formatter.LocaleNumberFormatFactory;
+import matteogilioli.balancebuddy.view.components.AddButton;
 import matteogilioli.balancebuddy.view.components.SpinnerDate;
+import matteogilioli.balancebuddy.view.formatter.LocaleNumberFormatFactory;
+import matteogilioli.balancebuddy.view.table.BalanceTable;
 
 import javax.swing.*;
 import java.awt.*;
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
 
 public class FormDialog extends JDialog {
     private static final String[] labels = {"Tipo", "Data", "Descrizione", "Importo"};
@@ -21,7 +19,7 @@ public class FormDialog extends JDialog {
     private final JSpinner datetime;
     public final JButton addButton;
 
-    public FormDialog(String entryType) {
+    public FormDialog(String entryType, BalanceTable table) {
         super();
 
         type = new JComboBox<>("Entrata, Uscita".split(", "));
@@ -30,7 +28,7 @@ public class FormDialog extends JDialog {
         amount = new JFormattedTextField();
         amount.setFormatterFactory(new LocaleNumberFormatFactory());
         datetime = new SpinnerDate("dd/MM/yyyy HH:mm");
-        addButton = new AddButton(new AddListener(this));
+        addButton = new AddButton(new AddListener(this, table));
 
         changeType(entryType);
 
@@ -62,7 +60,7 @@ public class FormDialog extends JDialog {
         this.add(form, c);
         this.setResizable(false);
         this.pack();
-        this.setLocationRelativeTo(Application.getMainFrame());
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
 
@@ -79,11 +77,7 @@ public class FormDialog extends JDialog {
     }
 
     public LocalDateTime getDatetime() {
-        Object obj = datetime.getValue();
-        Date date = (Date) obj;
-        Instant inst = date.toInstant();
-        ZoneId zone = ZoneId.systemDefault();
-        return LocalDateTime.ofInstant(inst, zone);
+        return Utility.getDateTime(datetime);
     }
 
     private void changeType(String entryType) {

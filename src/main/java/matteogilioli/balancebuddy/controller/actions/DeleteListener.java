@@ -1,24 +1,24 @@
 package matteogilioli.balancebuddy.controller.actions;
 
-import matteogilioli.balancebuddy.controller.Application;
-import matteogilioli.balancebuddy.view.panels.TablePanel;
+import matteogilioli.balancebuddy.controller.table.BalanceTableModel;
 import matteogilioli.balancebuddy.model.Balance;
+import matteogilioli.balancebuddy.view.table.BalanceTable;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DeleteListener implements ActionListener {
-    private final TablePanel tablePanel;
+    private final BalanceTable table;
 
-    public DeleteListener(TablePanel tablePanel) {
-        this.tablePanel = tablePanel;
+    public DeleteListener(BalanceTable table) {
+        this.table = table;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        int[] selectedIndexes = tablePanel.getTable().getSelectedIndexes();
+        int[] selectedIndexes = table.getSelectedIndexes();
         Balance.removeEntries(selectedIndexes);
-        Application.refreshData();
+        ((BalanceTableModel) table.getModel()).refresh();
     }
 }
 
