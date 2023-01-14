@@ -18,7 +18,6 @@ public class FiltersPanel extends JPanel {
     private static final String[] labels = {"", "Anno", "Mese", "Settimana", "Giorno", "Dal", "al"};
     private final JLabel[] jLabels = new JLabel[labels.length];
     private final JRadioButton[] radioButtons = new JRadioButton[labels.length - 1];
-    private final ButtonGroup radioGroup = new ButtonGroup();
     private final JComponent[] dateSpinner = new JComponent[labels.length];
     private final BalanceTable table;
 
@@ -30,6 +29,7 @@ public class FiltersPanel extends JPanel {
         for (int i = 0; i < labels.length; i++)
             jLabels[i] = new JLabel(labels[i]);
 
+        ButtonGroup radioGroup = new ButtonGroup();
         for(int i = 0; i < radioButtons.length; i++) {
             radioButtons[i] = new JRadioButton();
             radioButtons[i].addItemListener(new radioListener());
