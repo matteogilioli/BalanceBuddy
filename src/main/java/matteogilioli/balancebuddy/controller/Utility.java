@@ -8,6 +8,16 @@ import java.time.ZoneId;
 import java.util.Date;
 
 public final class Utility {
+    private static JFrame mainFrame;
+
+    public static void setJFrame(JFrame frame) {
+        mainFrame = frame;
+    }
+
+    public static JFrame getJFrame() {
+        return mainFrame;
+    }
+
     public static LocalDateTime getDateTime(JSpinner datetime) {
         Object obj = datetime.getValue();
         Date date = (Date) obj;

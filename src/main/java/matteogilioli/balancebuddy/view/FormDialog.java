@@ -60,7 +60,7 @@ public class FormDialog extends JDialog {
         this.add(form, c);
         this.setResizable(false);
         this.pack();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(Utility.getJFrame());
         this.setVisible(true);
     }
 
@@ -82,16 +82,15 @@ public class FormDialog extends JDialog {
 
     private void changeType(String entryType) {
         switch (entryType) {
-            case "Entrata":
+            case "Entrata" -> {
                 type.setSelectedItem("Entrata");
                 this.setTitle("Aggiungi Entrata");
-                break;
-            case "Uscita":
+            }
+            case "Uscita" -> {
                 type.setSelectedItem("Uscita");
                 this.setTitle("Aggiungi Uscita");
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + entryType);
+            }
+            default -> throw new IllegalStateException("Unexpected value: " + entryType);
         }
     }
 

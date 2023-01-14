@@ -1,5 +1,6 @@
 package matteogilioli.balancebuddy.view;
 
+import matteogilioli.balancebuddy.controller.Utility;
 import matteogilioli.balancebuddy.view.panels.FiltersPanel;
 import matteogilioli.balancebuddy.view.panels.TablePanel;
 
@@ -7,12 +8,13 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BudgetBuddyFrame extends JFrame {
-    private TablePanel tablePanel;
-    private FiltersPanel filtersPanel;
+    private final TablePanel tablePanel;
+    private final FiltersPanel filtersPanel;
 
     public BudgetBuddyFrame() {
         super();
 
+        Utility.setJFrame(this);
         tablePanel = new TablePanel();
         filtersPanel = new FiltersPanel(tablePanel.getTable());
         this.setJMenuBar(new MenuBar(tablePanel.getTable()));
