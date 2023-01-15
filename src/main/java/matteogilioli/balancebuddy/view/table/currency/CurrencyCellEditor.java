@@ -1,6 +1,6 @@
 package matteogilioli.balancebuddy.view.table.currency;
 
-import matteogilioli.balancebuddy.view.formatter.LocaleNumberFormatFactory;
+import matteogilioli.balancebuddy.controller.formatter.LocaleNumberFormatFactory;
 
 import javax.swing.*;
 import java.awt.*;

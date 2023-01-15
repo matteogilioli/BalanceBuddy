@@ -2,9 +2,9 @@ package matteogilioli.balancebuddy.view;
 
 import matteogilioli.balancebuddy.controller.Utility;
 import matteogilioli.balancebuddy.controller.actions.AddListener;
+import matteogilioli.balancebuddy.controller.formatter.LocalePositiveNumberFormat;
 import matteogilioli.balancebuddy.view.components.AddButton;
 import matteogilioli.balancebuddy.view.components.SpinnerDate;
-import matteogilioli.balancebuddy.view.formatter.LocaleNumberFormatFactory;
 import matteogilioli.balancebuddy.view.table.BalanceTable;
 
 import javax.swing.*;
@@ -25,8 +25,8 @@ public class FormDialog extends JDialog {
         type = new JComboBox<>("Entrata, Uscita".split(", "));
         type.addItemListener(e -> changeType((String) e.getItem()));
         description = new JTextField();
-        amount = new JFormattedTextField();
-        amount.setFormatterFactory(new LocaleNumberFormatFactory());
+
+        amount = new JFormattedTextField(new LocalePositiveNumberFormat());
         datetime = new SpinnerDate("dd/MM/yyyy HH:mm");
         addButton = new AddButton(new AddListener(this, table));
 
