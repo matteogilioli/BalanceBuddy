@@ -40,12 +40,11 @@ public class FiltersPanel extends JPanel {
         dateSpinner[0].setFocusable(false);
         dateSpinner[1] = new SpinnerDate("yyyy");
         dateSpinner[2] = new SpinnerDate("MMMM yyyy");
-        for (int i = 3; i < dateSpinner.length; i++) {
+        for (int i = 3; i < dateSpinner.length; i++)
             dateSpinner[i] = new SpinnerDate("dd/MM/yyyy");
-        }
 
         for (int i = 1; i < dateSpinner.length; i++)
-            ((JSpinner) dateSpinner[i]).addChangeListener(new datetimeListener(i));
+            ((JSpinner) dateSpinner[i]).addChangeListener(new datetimeListener(i == 6 ? 5 : i));
 
         radioButtons[0].setSelected(true);
 

@@ -19,7 +19,7 @@ public class CellColor extends DefaultTableCellRenderer {
         Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
         BalanceTableModel model = (BalanceTableModel) table.getModel();
-        BalanceEntry entry = model.getEntries().get(row);
+        BalanceEntry entry = model.getEntries().get(table.convertRowIndexToModel(row));
 
         setBorder(noFocusBorder);
 
