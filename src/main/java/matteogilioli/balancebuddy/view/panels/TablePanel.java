@@ -11,11 +11,13 @@ public class TablePanel extends JPanel {
     private final BalanceTable table;
     private final JScrollPane tableScrollPane;
     private final JButton deleteButton;
+    private final JLabel totalLabel;
 
     public TablePanel() {
         super();
 
-        table = new BalanceTable();
+        totalLabel = new JLabel("Totale: 0,00 €");
+        table = new BalanceTable(totalLabel);
         tableScrollPane = new JScrollPane(table);
         deleteButton = new DeleteButton(new DeleteListener(table));
 
@@ -29,7 +31,7 @@ public class TablePanel extends JPanel {
         bottomPanel.setLayout(new BorderLayout());
 
         bottomPanel.add(deleteButton, BorderLayout.WEST);
-        bottomPanel.add(new JLabel("Totale:"), BorderLayout.EAST);
+        bottomPanel.add(totalLabel, BorderLayout.EAST);
 
         this.add(tableScrollPane);
         this.add(Box.createVerticalStrut(5));

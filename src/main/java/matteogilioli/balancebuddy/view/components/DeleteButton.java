@@ -14,5 +14,6 @@ public class DeleteButton extends JButton {
         super("Elimina selezionati", icon);
         this.addActionListener(onDeleteButtonClick);
         this.setPreferredSize(new Dimension(180, 35));
+        this.setMinimumSize(new Dimension(180, 35));
     }
 }
