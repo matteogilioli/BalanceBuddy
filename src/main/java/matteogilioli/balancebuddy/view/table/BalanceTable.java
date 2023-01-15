@@ -2,6 +2,7 @@ package matteogilioli.balancebuddy.view.table;
 
 import matteogilioli.balancebuddy.controller.table.BalanceTableModel;
 import matteogilioli.balancebuddy.controller.table.DateRowFilter;
+import matteogilioli.balancebuddy.view.panels.SearchPanel;
 import matteogilioli.balancebuddy.view.table.currency.CurrencyCellColor;
 import matteogilioli.balancebuddy.view.table.currency.CurrencyCellEditor;
 import matteogilioli.balancebuddy.view.table.date.DateCellColor;
@@ -18,6 +19,7 @@ public class BalanceTable extends JTable {
     private final TableRowSorter<BalanceTableModel> sorter;
     private final DateRowFilter filter;
     private final JLabel totalLabel;
+    private SearchPanel searchPanel;
     private static final Color expenseColor = new Color(194, 18, 18);
     private static final Color incomeColor = new Color(20, 140, 7);
 
@@ -59,6 +61,10 @@ public class BalanceTable extends JTable {
         return filter;
     }
 
+    public void setSearchPanel(SearchPanel searchPanel) {
+        this.searchPanel = searchPanel;
+    }
+
     public void refreshSort() {
         sorter.setRowFilter(filter);
         sorter.sort();
@@ -72,5 +78,6 @@ public class BalanceTable extends JTable {
 
         totalLabel.setText(totalString);
         totalLabel.setForeground(totalAmount.compareTo(BigDecimal.ZERO) < 0 ? expenseColor : incomeColor);
+        searchPanel.resetSearch();
     }
 }

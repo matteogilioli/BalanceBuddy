@@ -17,6 +17,8 @@ public final class Main {
         FlatMacLightLaf.setup();
 
         populate(); // Examples
+        populate();
+        populate();
 
         SwingUtilities.invokeLater(BudgetBuddyFrame::new);
     }

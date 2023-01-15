@@ -14,7 +14,6 @@ import java.awt.event.ItemListener;
 import java.time.LocalDate;
 
 public class FiltersPanel extends JPanel {
-    private static final String title = "Filtri";
     private static final String[] labels = {"", "Anno", "Mese", "Settimana", "Giorno", "Dal", "al"};
     private final JLabel[] jLabels = new JLabel[labels.length];
     private final JRadioButton[] radioButtons = new JRadioButton[labels.length - 1];
@@ -71,8 +70,9 @@ public class FiltersPanel extends JPanel {
             if (i != labels.length - 1) form.add(radioButtons[i], c);
         }
 
-        JLabel titleLabel = new JLabel(title);
+        JLabel titleLabel = new JLabel("Filtri", JLabel.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        titleLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
 
         this.add(titleLabel);
         this.add(Box.createVerticalStrut(5));
@@ -89,21 +89,23 @@ public class FiltersPanel extends JPanel {
     class radioListener implements ItemListener {
         @Override
         public void itemStateChanged(ItemEvent e) {
-            JRadioButton selectedButton = (JRadioButton) e.getSource();
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                JRadioButton selectedButton = (JRadioButton) e.getSource();
 
-            for (int i = 0; i < radioButtons.length; i++) {
-                boolean isSelected = radioButtons[i] == selectedButton;
+                for (int i = 0; i < radioButtons.length; i++) {
+                    boolean isSelected = radioButtons[i] == selectedButton;
 
-                dateSpinner[i].setEnabled(isSelected);
-                jLabels[i].setEnabled(isSelected);
+                    dateSpinner[i].setEnabled(isSelected);
+                    jLabels[i].setEnabled(isSelected);
 
-                if (i == radioButtons.length - 1) {
-                    dateSpinner[i + 1].setEnabled(isSelected);
-                    jLabels[i + 1].setEnabled(isSelected);
+                    if (i == radioButtons.length - 1) {
+                        dateSpinner[i + 1].setEnabled(isSelected);
+                        jLabels[i + 1].setEnabled(isSelected);
+                    }
+
+                    if (isSelected)
+                        updateFilter(i);
                 }
-
-                if (isSelected)
-                    updateFilter(i);
             }
         }
     }

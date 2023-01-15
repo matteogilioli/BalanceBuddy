@@ -2,6 +2,7 @@ package matteogilioli.balancebuddy.view;
 
 import matteogilioli.balancebuddy.controller.Utility;
 import matteogilioli.balancebuddy.view.panels.FiltersPanel;
+import matteogilioli.balancebuddy.view.panels.SearchPanel;
 import matteogilioli.balancebuddy.view.panels.TablePanel;
 
 import javax.swing.*;
@@ -9,6 +10,7 @@ import java.awt.*;
 
 public class BudgetBuddyFrame extends JFrame {
     private final TablePanel tablePanel;
+    private final SearchPanel searchPanel;
     private final FiltersPanel filtersPanel;
 
     public BudgetBuddyFrame() {
@@ -16,7 +18,10 @@ public class BudgetBuddyFrame extends JFrame {
 
         Utility.setJFrame(this);
         tablePanel = new TablePanel();
+        searchPanel = new SearchPanel(tablePanel.getTable());
+        tablePanel.getTable().setSearchPanel(searchPanel);
         filtersPanel = new FiltersPanel(tablePanel.getTable());
+
         this.setJMenuBar(new MenuBar(tablePanel.getTable()));
 
         createGUI();
@@ -30,7 +35,14 @@ public class BudgetBuddyFrame extends JFrame {
 
         JPanel main = new JPanel(new GridBagLayout());
         main.add(Box.createHorizontalStrut(30));
-        main.add(filtersPanel);
+
+        JPanel leftPanel = new JPanel();
+        leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
+        leftPanel.add(searchPanel);
+        leftPanel.add(Box.createVerticalStrut(20));
+        leftPanel.add(filtersPanel);
+
+        main.add(leftPanel);
         main.add(Box.createHorizontalStrut(20));
         main.add(tablePanel);
         main.add(Box.createHorizontalStrut(20));
