@@ -38,7 +38,13 @@ public class BalanceTable extends JTable {
     }
 
     public int[] getSelectedIndexes() {
-        return this.getSelectedRows();
+        int[] selectedRows = this.getSelectedRows();
+        int[] modelRowIndices = new int[selectedRows.length];
+
+        for (int i = 0; i < selectedRows.length; i++)
+            modelRowIndices[i] = this.convertRowIndexToModel(selectedRows[i]);
+
+        return modelRowIndices;
     }
 
     public DateRowFilter getFilter() {
