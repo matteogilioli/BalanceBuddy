@@ -14,8 +14,9 @@ import java.util.Random;
 
 public final class Main {
     public static void main(String[] args) {
+        System.setProperty("apple.laf.useScreenMenuBar", "true");
+        System.setProperty("apple.awt.application.name", "BalanceBuddy");
         FlatMacLightLaf.setup();
-
         populate(); // Examples
 
         SwingUtilities.invokeLater(BudgetBuddyFrame::new);
