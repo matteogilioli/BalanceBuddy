@@ -78,6 +78,6 @@ public class BalanceTable extends JTable {
 
         totalLabel.setText(totalString);
         totalLabel.setForeground(totalAmount.compareTo(BigDecimal.ZERO) < 0 ? expenseColor : incomeColor);
-        searchPanel.resetSearch();
+        searchPanel.newSearch();
     }
 }

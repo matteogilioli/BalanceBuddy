@@ -44,15 +44,18 @@ public class SearchPanel extends JPanel {
     }
 
     private void search() {
-        if (!searchField.getText().toLowerCase().equals(searchText)) {
-            searchText = searchField.getText().toLowerCase();
-            resetSearch();
+        String text = searchField.getText().toLowerCase().trim();
+        if (!text.equals(searchText)) {
+            searchText = text;
+            if (!text.isEmpty())
+                newSearch();
         }
 
-        s.searchAndSelect();
+        if (text.isEmpty()) table.clearSelection();
+        else s.searchAndSelect();
     }
 
-    public void resetSearch() {
+    public void newSearch() {
         s = new SearchAndSelect(table, searchText, 1);
     }
 }

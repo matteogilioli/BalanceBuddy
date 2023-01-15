@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class SearchButton extends JButton {
-    private static final FontIcon icon = FontIcon.of(FontAwesomeSolid.SEARCH, 16, Color.GRAY);
+    private static final FontIcon icon = FontIcon.of(FontAwesomeSolid.SEARCH, 16, new Color(40, 100, 228));
 
     public SearchButton() {
         super(icon);
