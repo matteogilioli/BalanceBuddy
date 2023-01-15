@@ -20,6 +20,7 @@ public class SearchPanel extends JPanel {
         this.table = table;
         searchField = new JTextField(20);
         searchButton = new SearchButton();
+        searchField.addActionListener(e -> search());
         searchButton.addActionListener(e -> search());
         searchText = "";
 
