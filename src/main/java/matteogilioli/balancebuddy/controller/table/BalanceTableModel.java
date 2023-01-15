@@ -33,14 +33,10 @@ public final class BalanceTableModel extends AbstractTableModel {
     @Override
     public String getColumnName(int columnIndex) {
         return switch (columnIndex) {
-            case 0:
-                yield "Data";
-            case 1:
-                yield "Descrizione";
-            case 2:
-                yield "Importo";
-            default:
-                yield null;
+            case 0 -> "Data";
+            case 1 -> "Descrizione";
+            case 2 -> "Importo";
+            default -> throw new IllegalStateException("Unexpected value: " + columnIndex);
         };
     }
 
@@ -48,14 +44,10 @@ public final class BalanceTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         BalanceEntry voce = Balance.getEntries().get(rowIndex);
         return switch (columnIndex) {
-            case 0: // Data
-                yield voce.getDatetime();
-            case 1: // Descrizione
-                yield voce.getDescription();
-            case 2: // Importo
-                yield voce.getAmount();
-            default:
-                yield null;
+            case 0 -> voce.getDatetime();
+            case 1 -> voce.getDescription();
+            case 2 -> voce.getAmount();
+            default -> throw new IllegalStateException("Unexpected value: " + columnIndex);
         };
     }
 
