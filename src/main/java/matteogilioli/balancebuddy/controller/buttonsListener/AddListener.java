@@ -1,5 +1,6 @@
 package matteogilioli.balancebuddy.controller.buttonsListener;
 
+import matteogilioli.balancebuddy.controller.formatter.LocaleNumberFormat;
 import matteogilioli.balancebuddy.controller.table.BalanceTableModel;
 import matteogilioli.balancebuddy.gui.FormDialog;
 import matteogilioli.balancebuddy.gui.table.BalanceTable;
@@ -14,7 +15,6 @@ import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.time.LocalDateTime;
-import java.util.Locale;
 
 public class AddListener implements ActionListener {
     private final FormDialog form;
@@ -41,7 +41,7 @@ public class AddListener implements ActionListener {
         if (description.isBlank() || amountString.isBlank())
             return;
 
-        NumberFormat nf = NumberFormat.getInstance(Locale.getDefault());
+        NumberFormat nf = new LocaleNumberFormat();
         BigDecimal amount;
         try {
             amount = new BigDecimal(nf.parse(amountString).toString());
