@@ -28,7 +28,7 @@ public class SaveAction extends AbstractAction {
         fileChooser.setAcceptAllFileFilterUsed(false);
 
         LocalDateTime now = LocalDateTime.now();
-        String defaultFileName = String.format("Backup %s.balancebuddy", now.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")));
+        String defaultFileName = "backup " + now.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss")) + ".balancebuddy";
         File defaultFile = new File(defaultFileName);
 
         boolean fileSaved = false;

@@ -79,7 +79,9 @@ public class BalanceTable extends JTable {
         String totalString = "Totale: " + currency.format(totalAmount);
 
         totalLabel.setText(totalString);
-        totalLabel.setForeground(totalAmount.compareTo(BigDecimal.ZERO) < 0 ? expenseColor : incomeColor);
+        if (totalAmount.compareTo(BigDecimal.ZERO) < 0)  totalLabel.setForeground(expenseColor);
+        else if (totalAmount.compareTo(BigDecimal.ZERO) > 0) totalLabel.setForeground(incomeColor);
+        else totalLabel.setForeground(Color.BLACK);
         searchPanel.newSearch();
     }
 }

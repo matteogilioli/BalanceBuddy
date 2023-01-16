@@ -34,7 +34,7 @@ public abstract class BalanceEntry implements Serializable {
     }
 
     public void setAmount(BigDecimal amount) {
-        this.amount = amount;
+        this.amount = amount.abs();
     }
 }
 
