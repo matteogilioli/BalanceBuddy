@@ -21,6 +21,7 @@
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
+.idea/artifacts
 
 # Gradle
 .idea/**/gradle.xml
@@ -49,7 +50,7 @@ cmake-build-*/
 *.iws
 
 # IntelliJ
-target/
+out/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/

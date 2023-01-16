@@ -11,7 +11,7 @@ public abstract class BalanceEntry implements Serializable {
 
     public BalanceEntry(String description, BigDecimal amount, LocalDateTime datetime) {
         this.description = description;
-        this.amount = amount;
+        this.amount = amount.abs();
         this.datetime = datetime;
     }
 
@@ -31,6 +31,10 @@ public abstract class BalanceEntry implements Serializable {
 
     public void setDatetime(LocalDateTime datetime) {
         this.datetime = datetime;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 }
 

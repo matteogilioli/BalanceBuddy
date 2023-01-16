@@ -31,8 +31,9 @@ public final class Balance {
         BalanceEntry entry = entries.get(index);
 
         if (newAmount.compareTo(BigDecimal.valueOf(0)) < 0 && entry instanceof IncomeEntry)
-            entries.set(index, new ExpenseEntry(entry.getDescription(), newAmount.negate(), entry.getDatetime()));
+            entries.set(index, new ExpenseEntry(entry.getDescription(), newAmount, entry.getDatetime()));
         else if (newAmount.compareTo(BigDecimal.valueOf(0)) >= 0 && entry instanceof ExpenseEntry)
             entries.set(index, new IncomeEntry(entry.getDescription(), newAmount, entry.getDatetime()));
+        else entry.setAmount(newAmount);
     }
 }
