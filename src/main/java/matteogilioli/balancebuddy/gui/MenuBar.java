@@ -1,9 +1,6 @@
 package matteogilioli.balancebuddy.gui;
 
-import matteogilioli.balancebuddy.controller.menuActions.LoadAction;
-import matteogilioli.balancebuddy.controller.menuActions.NewExpenseAction;
-import matteogilioli.balancebuddy.controller.menuActions.NewIncomeAction;
-import matteogilioli.balancebuddy.controller.menuActions.SaveAction;
+import matteogilioli.balancebuddy.controller.menuActions.*;
 import matteogilioli.balancebuddy.gui.table.BalanceTable;
 
 import javax.swing.*;
@@ -20,6 +17,8 @@ public class MenuBar extends JMenuBar {
         exportMenu.add(new JMenuItem("File di testo"));
         fileMenu.addSeparator();
         fileMenu.add(exportMenu);
+        fileMenu.addSeparator();
+        fileMenu.add(new JMenuItem(new PrintAction("Stampa", table)));
 
         JMenu addMenu = new JMenu("Aggiungi");
         addMenu.add(new JMenuItem(new NewIncomeAction("Nuova entrata", table)));

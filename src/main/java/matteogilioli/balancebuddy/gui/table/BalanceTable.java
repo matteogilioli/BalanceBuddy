@@ -63,6 +63,10 @@ public class BalanceTable extends JTable {
         return filter;
     }
 
+    public JLabel getTotalLabel() {
+        return totalLabel;
+    }
+
     public void setSearchPanel(SearchPanel searchPanel) {
         this.searchPanel = searchPanel;
     }
