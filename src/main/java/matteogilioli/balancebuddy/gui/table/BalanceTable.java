@@ -33,6 +33,8 @@ public class BalanceTable extends JTable {
         this.setDefaultRenderer(Object.class, new CellColor());
 
         sorter = new TableRowSorter<>(model);
+        sorter.toggleSortOrder(0);
+        sorter.toggleSortOrder(0);
         filter = new DateRowFilter();
         sorter.setRowFilter(filter);
         this.setRowSorter(sorter);

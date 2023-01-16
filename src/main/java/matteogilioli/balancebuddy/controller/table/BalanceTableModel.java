@@ -80,4 +80,14 @@ public final class BalanceTableModel extends AbstractTableModel {
     public ArrayList<BalanceEntry> getEntries() {
         return Balance.getEntries();
     }
+
+    @Override
+    public Class<?> getColumnClass(int columnIndex) {
+        return switch (columnIndex) {
+            case 0 -> LocalDateTime.class;
+            case 1 -> String.class;
+            case 2 -> BigDecimal.class;
+            default -> Object.class;
+        };
+    }
 }
