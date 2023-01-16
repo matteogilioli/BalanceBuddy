@@ -11,7 +11,6 @@ public class FileLoadSave {
             objectStream.close();
             return data;
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
             return new Error();
         }
     }
