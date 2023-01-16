@@ -1,8 +1,8 @@
 package matteogilioli.balancebuddy.controller.table;
 
-import matteogilioli.balancebuddy.model.Balance;
-import matteogilioli.balancebuddy.model.BalanceEntry;
-import matteogilioli.balancebuddy.view.table.BalanceTable;
+import matteogilioli.balancebuddy.gui.table.BalanceTable;
+import matteogilioli.balancebuddy.logic.model.Balance;
+import matteogilioli.balancebuddy.logic.model.BalanceEntry;
 
 import javax.swing.table.AbstractTableModel;
 import java.math.BigDecimal;
@@ -59,16 +59,14 @@ public final class BalanceTableModel extends AbstractTableModel {
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         BalanceEntry voce = Balance.getEntries().get(rowIndex);
         switch (columnIndex) {
-            case 0 -> { // Data
+            case 0 -> {
                 Date date = (Date) aValue;
                 Instant inst = date.toInstant();
                 ZoneId zone = ZoneId.systemDefault();
                 voce.setDatetime(LocalDateTime.ofInstant(inst, zone));
             }
-            case 1 -> // Descrizione
-                    voce.setDescription((String) aValue);
-            case 2 -> // Importo
-                    Balance.editAmount(rowIndex, BigDecimal.valueOf(((Number) aValue).doubleValue()));
+            case 1 -> voce.setDescription((String) aValue);
+            case 2 -> Balance.editAmount(rowIndex, new BigDecimal(aValue.toString()));
         }
 
         refresh();

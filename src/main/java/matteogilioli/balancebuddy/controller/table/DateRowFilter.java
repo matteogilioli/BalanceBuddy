@@ -1,6 +1,6 @@
 package matteogilioli.balancebuddy.controller.table;
 
-import matteogilioli.balancebuddy.model.FilterType;
+import matteogilioli.balancebuddy.logic.FilterType;
 
 import javax.swing.*;
 import java.time.LocalDate;
