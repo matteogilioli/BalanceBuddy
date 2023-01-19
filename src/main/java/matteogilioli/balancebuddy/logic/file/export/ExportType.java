@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class ExportType {
     private final String separator;
@@ -22,7 +23,7 @@ public class ExportType {
                 String date = entry.getDatetime().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                 String time = entry.getDatetime().format(DateTimeFormatter.ofPattern("HH:mm"));
                 String description = entry.getDescription();
-                String amount = entry.getAmount().toString();
+                String amount = String.format(Locale.US, "%.2f", entry.getAmount());
                 writer.println(date + separator + time + separator + description + separator + amount);
             }
             return true;

@@ -26,6 +26,8 @@ public class FormDialog extends JDialog {
         type.addItemListener(e -> changeType((String) e.getItem()));
         description = new JTextField();
 
+
+
         amount = new JFormattedTextField(new LocalePositiveNumberFormat());
         datetime = new SpinnerDate("dd/MM/yyyy HH:mm");
         addButton = new AddButton(new AddListener(this, tableModel));

@@ -1,7 +1,6 @@
 package matteogilioli.balancebuddy.logic.actions.buttonsListener;
 
 import matteogilioli.balancebuddy.gui.FormDialog;
-import matteogilioli.balancebuddy.logic.formatter.LocaleNumberFormat;
 import matteogilioli.balancebuddy.logic.model.Balance;
 import matteogilioli.balancebuddy.logic.model.BalanceEntry;
 import matteogilioli.balancebuddy.logic.model.ExpenseEntry;
@@ -41,7 +40,9 @@ public class AddListener implements ActionListener {
         if (description.isBlank() || amountString.isBlank())
             return;
 
-        NumberFormat nf = new LocaleNumberFormat();
+        NumberFormat nf = NumberFormat.getInstance();
+        nf.setMaximumFractionDigits(2);
+        nf.setMinimumFractionDigits(2);
         BigDecimal amount;
         try {
             amount = new BigDecimal(nf.parse(amountString).toString());

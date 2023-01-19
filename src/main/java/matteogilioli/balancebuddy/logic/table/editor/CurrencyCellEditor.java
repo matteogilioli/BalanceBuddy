@@ -1,17 +1,21 @@
 package matteogilioli.balancebuddy.logic.table.editor;
 
-import matteogilioli.balancebuddy.logic.formatter.LocaleNumberFormatFactory;
-
 import javax.swing.*;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.NumberFormatter;
 import java.awt.*;
+import java.text.NumberFormat;
 
 public class CurrencyCellEditor extends DefaultCellEditor {
     private final JFormattedTextField doubleEditor;
 
     public CurrencyCellEditor() {
         super(new JFormattedTextField());
+        NumberFormat nf = NumberFormat.getNumberInstance();
+        nf.setMinimumFractionDigits(2);
+        nf.setMaximumFractionDigits(2);
         doubleEditor = (JFormattedTextField) getComponent();
-        doubleEditor.setFormatterFactory(new LocaleNumberFormatFactory());
+        doubleEditor.setFormatterFactory(new DefaultFormatterFactory(new NumberFormatter(nf)));
         doubleEditor.setHorizontalAlignment(JFormattedTextField.RIGHT);
     }
 
