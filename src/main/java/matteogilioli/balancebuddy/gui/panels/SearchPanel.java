@@ -1,8 +1,8 @@
 package matteogilioli.balancebuddy.gui.panels;
 
-import matteogilioli.balancebuddy.controller.table.SearchAndSelect;
 import matteogilioli.balancebuddy.gui.components.SearchButton;
 import matteogilioli.balancebuddy.gui.table.BalanceTable;
+import matteogilioli.balancebuddy.logic.table.filter.SearchAndSelect;
 
 import javax.swing.*;
 import java.awt.*;

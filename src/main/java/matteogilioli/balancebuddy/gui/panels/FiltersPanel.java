@@ -1,9 +1,9 @@
 package matteogilioli.balancebuddy.gui.panels;
 
-import matteogilioli.balancebuddy.controller.Utility;
 import matteogilioli.balancebuddy.gui.components.SpinnerDate;
 import matteogilioli.balancebuddy.gui.table.BalanceTable;
-import matteogilioli.balancebuddy.logic.FilterType;
+import matteogilioli.balancebuddy.logic.Utility;
+import matteogilioli.balancebuddy.logic.table.filter.FilterType;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;

@@ -1,12 +1,13 @@
 package matteogilioli.balancebuddy.gui.table;
 
-import matteogilioli.balancebuddy.controller.table.BalanceTableModel;
-import matteogilioli.balancebuddy.controller.table.DateRowFilter;
 import matteogilioli.balancebuddy.gui.panels.SearchPanel;
-import matteogilioli.balancebuddy.gui.table.currency.CurrencyCellColor;
-import matteogilioli.balancebuddy.gui.table.currency.CurrencyCellEditor;
-import matteogilioli.balancebuddy.gui.table.date.DateCellColor;
-import matteogilioli.balancebuddy.gui.table.date.DateCellEditor;
+import matteogilioli.balancebuddy.gui.table.renderer.CellColor;
+import matteogilioli.balancebuddy.gui.table.renderer.CurrencyCellColor;
+import matteogilioli.balancebuddy.gui.table.renderer.DateCellColor;
+import matteogilioli.balancebuddy.logic.table.BalanceTableModel;
+import matteogilioli.balancebuddy.logic.table.editor.CurrencyCellEditor;
+import matteogilioli.balancebuddy.logic.table.editor.DateCellEditor;
+import matteogilioli.balancebuddy.logic.table.filter.DateRowFilter;
 
 import javax.swing.*;
 import javax.swing.table.TableColumn;

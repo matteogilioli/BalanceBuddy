@@ -1,12 +1,16 @@
 package matteogilioli.balancebuddy.gui;
 
-import matteogilioli.balancebuddy.controller.Utility;
 import matteogilioli.balancebuddy.gui.panels.FiltersPanel;
 import matteogilioli.balancebuddy.gui.panels.SearchPanel;
 import matteogilioli.balancebuddy.gui.panels.TablePanel;
+import matteogilioli.balancebuddy.logic.Utility;
+import matteogilioli.balancebuddy.logic.file.backup.LoadBackup;
+import matteogilioli.balancebuddy.logic.model.Balance;
+import matteogilioli.balancebuddy.logic.table.BalanceTableModel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 public class BudgetBuddyFrame extends JFrame {
     private final TablePanel tablePanel;
@@ -21,6 +25,12 @@ public class BudgetBuddyFrame extends JFrame {
         searchPanel = new SearchPanel(tablePanel.getTable());
         tablePanel.getTable().setSearchPanel(searchPanel);
         filtersPanel = new FiltersPanel(tablePanel.getTable());
+
+        // Test data - DA CANCELLARE
+        BalanceTableModel tableModel = (BalanceTableModel) tablePanel.getTable().getModel();
+        Balance.setEntries(new LoadBackup(tableModel).load(new File("examples/esempi.balancebuddy")));
+        tableModel.refresh();
+        // Test data - DA CANCELLARE
 
         this.setJMenuBar(new MenuBar(tablePanel.getTable()));
 

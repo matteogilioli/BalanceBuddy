@@ -1,13 +1,13 @@
 package matteogilioli.balancebuddy.gui;
 
-import matteogilioli.balancebuddy.controller.Utility;
-import matteogilioli.balancebuddy.controller.buttonsListener.AddListener;
-import matteogilioli.balancebuddy.controller.formatter.LocalePositiveNumberFormat;
 import matteogilioli.balancebuddy.gui.components.AddButton;
 import matteogilioli.balancebuddy.gui.components.SpinnerDate;
-import matteogilioli.balancebuddy.gui.table.BalanceTable;
+import matteogilioli.balancebuddy.logic.Utility;
+import matteogilioli.balancebuddy.logic.actions.buttonsListener.AddListener;
+import matteogilioli.balancebuddy.logic.formatter.LocalePositiveNumberFormat;
 
 import javax.swing.*;
+import javax.swing.table.TableModel;
 import java.awt.*;
 import java.time.LocalDateTime;
 
@@ -19,7 +19,7 @@ public class FormDialog extends JDialog {
     private final JSpinner datetime;
     public final JButton addButton;
 
-    public FormDialog(String entryType, BalanceTable table) {
+    public FormDialog(String entryType, TableModel tableModel) {
         super();
 
         type = new JComboBox<>("Entrata, Uscita".split(", "));
@@ -28,7 +28,7 @@ public class FormDialog extends JDialog {
 
         amount = new JFormattedTextField(new LocalePositiveNumberFormat());
         datetime = new SpinnerDate("dd/MM/yyyy HH:mm");
-        addButton = new AddButton(new AddListener(this, table));
+        addButton = new AddButton(new AddListener(this, tableModel));
 
         changeType(entryType);
 
