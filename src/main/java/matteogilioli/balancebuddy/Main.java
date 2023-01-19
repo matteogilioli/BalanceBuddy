@@ -2,7 +2,7 @@ package matteogilioli.balancebuddy;
 
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import matteogilioli.balancebuddy.gui.BudgetBuddyFrame;
-import matteogilioli.balancebuddy.logic.file.FileLoadSave;
+import matteogilioli.balancebuddy.logic.file.BackupManager;
 import matteogilioli.balancebuddy.logic.model.Balance;
 
 import javax.swing.*;
@@ -15,7 +15,7 @@ public final class Main {
         FlatMacLightLaf.setup();
 
         // Test data
-        Balance.setEntries(FileLoadSave.load(new File("examples/esempi.balancebuddy")));
+        Balance.setEntries(new BackupManager().load(new File("examples/esempi.balancebuddy")));
 
         SwingUtilities.invokeLater(BudgetBuddyFrame::new);
     }

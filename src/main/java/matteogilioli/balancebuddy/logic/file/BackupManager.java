@@ -2,8 +2,8 @@ package matteogilioli.balancebuddy.logic.file;
 
 import java.io.*;
 
-public class FileLoadSave {
-    public static Object load(File file) {
+public class BackupManager {
+    public Object load(File file) {
         try {
             FileInputStream fileStream = new FileInputStream(file);
             ObjectInputStream objectStream = new ObjectInputStream(fileStream);
@@ -15,7 +15,7 @@ public class FileLoadSave {
         }
     }
 
-    public static boolean save(Object data, File file) {
+    public boolean save(Object data, File file) {
         try {
             FileOutputStream fileStream = new FileOutputStream(file);
             ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);

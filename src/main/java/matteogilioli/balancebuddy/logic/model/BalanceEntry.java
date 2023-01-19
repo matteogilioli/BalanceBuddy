@@ -3,6 +3,7 @@ package matteogilioli.balancebuddy.logic.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public abstract class BalanceEntry implements Serializable {
     private String description;
@@ -30,7 +31,7 @@ public abstract class BalanceEntry implements Serializable {
     }
 
     public void setDatetime(LocalDateTime datetime) {
-        this.datetime = datetime;
+        this.datetime = datetime.truncatedTo(ChronoUnit.MINUTES);
     }
 
     public void setAmount(BigDecimal amount) {
