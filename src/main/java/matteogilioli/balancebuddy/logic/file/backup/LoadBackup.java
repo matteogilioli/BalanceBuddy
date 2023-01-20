@@ -17,18 +17,14 @@ public class LoadBackup extends LoadFile {
 
     @Override
     @SuppressWarnings("unchecked")
-    public ArrayList<BalanceEntry> readFromFile(File file) {
-        try {
-            FileInputStream fileStream = new FileInputStream(file);
-            ObjectInputStream objectStream = new ObjectInputStream(fileStream);
-            ArrayList<?> data = (ArrayList<?>) objectStream.readObject();
-            objectStream.close();
-            for (Object entry : data)
-                if (!(entry instanceof BalanceEntry))
-                    throw new IOException();
-            return (ArrayList<BalanceEntry>) data;
-        } catch (IOException | ClassCastException | ClassNotFoundException e) {
-            return null;
-        }
+    public ArrayList<BalanceEntry> readFromFile(File file) throws IOException, ClassNotFoundException {
+        FileInputStream fileStream = new FileInputStream(file);
+        ObjectInputStream objectStream = new ObjectInputStream(fileStream);
+        ArrayList<?> data = (ArrayList<?>) objectStream.readObject();
+        objectStream.close();
+        for (Object entry : data)
+            if (!(entry instanceof BalanceEntry))
+                throw new IOException();
+        return (ArrayList<BalanceEntry>) data;
     }
 }

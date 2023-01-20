@@ -7,6 +7,7 @@ import matteogilioli.balancebuddy.logic.table.BalanceTableModel;
 
 import javax.swing.*;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public abstract class LoadFile extends FileController {
@@ -33,13 +34,15 @@ public abstract class LoadFile extends FileController {
         String successMessage = "Il file " + file.getName() + " è stato caricato correttamente!";
         String errorMessage = "Errore durante il caricamento del file " + file.getName();
 
-        ArrayList<BalanceEntry> data = readFromFile(file);
-        if (data != null) {
+        try {
+            ArrayList<BalanceEntry> data = readFromFile(file);
             Balance.setEntries(data);
             tableModel.refresh();
             setCompleted(true);
             JOptionPane.showMessageDialog(Utility.getJFrame(), successMessage);
-        } else JOptionPane.showMessageDialog(Utility.getJFrame(), errorMessage, "Errore", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(Utility.getJFrame(), errorMessage, "Errore", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     @Override
@@ -47,5 +50,5 @@ public abstract class LoadFile extends FileController {
         return getFileChooser().showOpenDialog(frame);
     }
 
-    public abstract ArrayList<BalanceEntry> readFromFile(File file);
+    public abstract ArrayList<BalanceEntry> readFromFile(File file) throws IOException, ClassNotFoundException;
 }

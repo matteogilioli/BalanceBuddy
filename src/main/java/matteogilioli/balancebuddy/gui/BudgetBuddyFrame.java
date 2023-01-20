@@ -11,6 +11,7 @@ import matteogilioli.balancebuddy.logic.table.BalanceTableModel;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 
 public class BudgetBuddyFrame extends JFrame {
     private final TablePanel tablePanel;
@@ -28,7 +29,11 @@ public class BudgetBuddyFrame extends JFrame {
 
         // Test data - DA CANCELLARE
         BalanceTableModel tableModel = (BalanceTableModel) tablePanel.getTable().getModel();
-        Balance.setEntries(new LoadBackup(tableModel).readFromFile(new File("examples/esempi.balancebuddy")));
+        try {
+            Balance.setEntries(new LoadBackup(tableModel).readFromFile(new File("examples/esempi.balancebuddy")));
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         tableModel.refresh();
         // Test data - DA CANCELLARE
 
