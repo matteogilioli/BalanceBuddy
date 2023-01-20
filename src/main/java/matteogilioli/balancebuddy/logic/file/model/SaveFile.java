@@ -36,7 +36,7 @@ public abstract class SaveFile extends FileController {
         String successMessage = "Il file " + file.getName() + " è stato salvato correttamente!";
         String errorMessage = "Errore durante l'esportazione del file " + file.getName();
 
-        if (save(Balance.getEntries(), file)) {
+        if (saveFromFile(Balance.getEntries(), file)) {
             JOptionPane.showMessageDialog(Utility.getJFrame(), successMessage);
             return true;
         } else {
@@ -49,5 +49,5 @@ public abstract class SaveFile extends FileController {
         return getFileChooser().showSaveDialog(frame);
     }
 
-    public abstract boolean save(ArrayList<BalanceEntry> data, File file);
+    public abstract boolean saveFromFile(ArrayList<BalanceEntry> data, File file);
 }

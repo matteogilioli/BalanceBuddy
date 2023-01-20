@@ -13,7 +13,8 @@ public class SaveCSV extends SaveFile {
         super("csv", "CSV");
     }
 
-    public boolean save(ArrayList<BalanceEntry> data, File file) {
+    @Override
+    public boolean saveFromFile(ArrayList<BalanceEntry> data, File file) {
         return csv.export(data, file);
     }
 }

@@ -13,7 +13,8 @@ public class SaveText extends SaveFile {
         super("txt", "File testuale");
     }
 
-    public boolean save(ArrayList<BalanceEntry> data, File file) {
+    @Override
+    public boolean saveFromFile(ArrayList<BalanceEntry> data, File file) {
         return text.export(data, file);
     }
 }

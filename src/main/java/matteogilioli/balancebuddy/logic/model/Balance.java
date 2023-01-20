@@ -15,10 +15,9 @@ public final class Balance {
         return entries;
     }
 
-    @SuppressWarnings("unchecked")
-    public static void setEntries(Object data) {
+    public static void setEntries(ArrayList<BalanceEntry> data) {
         entries.clear();
-        entries.addAll((ArrayList<BalanceEntry>) data);
+        entries.addAll(data);
     }
 
     public static void removeEntries(int[] indexesToRemove) {

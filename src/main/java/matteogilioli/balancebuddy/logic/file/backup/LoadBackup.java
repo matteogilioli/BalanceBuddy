@@ -1,12 +1,14 @@
 package matteogilioli.balancebuddy.logic.file.backup;
 
 import matteogilioli.balancebuddy.logic.file.model.LoadFile;
+import matteogilioli.balancebuddy.logic.model.BalanceEntry;
 import matteogilioli.balancebuddy.logic.table.BalanceTableModel;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
 
 public class LoadBackup extends LoadFile {
     public LoadBackup(BalanceTableModel tableModel) {
@@ -14,15 +16,19 @@ public class LoadBackup extends LoadFile {
     }
 
     @Override
-    public Object load(File file) {
+    @SuppressWarnings("unchecked")
+    public ArrayList<BalanceEntry> readFromFile(File file) {
         try {
             FileInputStream fileStream = new FileInputStream(file);
             ObjectInputStream objectStream = new ObjectInputStream(fileStream);
-            Object data = objectStream.readObject();
+            ArrayList<?> data = (ArrayList<?>) objectStream.readObject();
             objectStream.close();
-            return data;
-        } catch (IOException | ClassNotFoundException e) {
-            return new Error();
+            for (Object entry : data)
+                if (!(entry instanceof BalanceEntry))
+                    throw new IOException();
+            return (ArrayList<BalanceEntry>) data;
+        } catch (IOException | ClassCastException | ClassNotFoundException e) {
+            return null;
         }
     }
 }

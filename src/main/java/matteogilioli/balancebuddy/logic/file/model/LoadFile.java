@@ -2,10 +2,12 @@ package matteogilioli.balancebuddy.logic.file.model;
 
 import matteogilioli.balancebuddy.logic.Utility;
 import matteogilioli.balancebuddy.logic.model.Balance;
+import matteogilioli.balancebuddy.logic.model.BalanceEntry;
 import matteogilioli.balancebuddy.logic.table.BalanceTableModel;
 
 import javax.swing.*;
 import java.io.File;
+import java.util.ArrayList;
 
 public abstract class LoadFile extends FileController {
     private final BalanceTableModel tableModel;
@@ -31,8 +33,8 @@ public abstract class LoadFile extends FileController {
         String successMessage = "Il file " + file.getName() + " è stato caricato correttamente!";
         String errorMessage = "Errore durante il caricamento del file " + file.getName();
 
-        Object data = load(file);
-        if (data.getClass() == Balance.getEntries().getClass()) {
+        ArrayList<BalanceEntry> data = readFromFile(file);
+        if (data != null) {
             Balance.setEntries(data);
             tableModel.refresh();
             setCompleted(true);
@@ -45,5 +47,5 @@ public abstract class LoadFile extends FileController {
         return getFileChooser().showOpenDialog(frame);
     }
 
-    public abstract Object load(File file);
+    public abstract ArrayList<BalanceEntry> readFromFile(File file);
 }

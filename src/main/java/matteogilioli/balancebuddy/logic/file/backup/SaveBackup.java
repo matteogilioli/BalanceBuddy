@@ -15,7 +15,7 @@ public class SaveBackup extends SaveFile {
     }
 
     @Override
-    public boolean save(ArrayList<BalanceEntry> data, File file) {
+    public boolean saveFromFile(ArrayList<BalanceEntry> data, File file) {
         try {
             FileOutputStream fileStream = new FileOutputStream(file);
             ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);

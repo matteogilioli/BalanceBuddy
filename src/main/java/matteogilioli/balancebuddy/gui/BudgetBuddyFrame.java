@@ -28,7 +28,7 @@ public class BudgetBuddyFrame extends JFrame {
 
         // Test data - DA CANCELLARE
         BalanceTableModel tableModel = (BalanceTableModel) tablePanel.getTable().getModel();
-        Balance.setEntries(new LoadBackup(tableModel).load(new File("examples/esempi.balancebuddy")));
+        Balance.setEntries(new LoadBackup(tableModel).readFromFile(new File("examples/esempi.balancebuddy")));
         tableModel.refresh();
         // Test data - DA CANCELLARE
 
