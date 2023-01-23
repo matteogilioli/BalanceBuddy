@@ -5,15 +5,10 @@ import matteogilioli.balancebuddy.gui.panels.SearchPanel;
 import matteogilioli.balancebuddy.gui.panels.TablePanel;
 import matteogilioli.balancebuddy.gui.table.BalanceTable;
 import matteogilioli.balancebuddy.logic.Utility;
-import matteogilioli.balancebuddy.logic.file.backup.LoadBackup;
-import matteogilioli.balancebuddy.logic.model.Balance;
 import matteogilioli.balancebuddy.logic.model.BalanceEntry;
-import matteogilioli.balancebuddy.logic.table.BalanceTableModel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 
 /**
  * La finestra principale dell'applicazione, fornisce un'interfaccia grafica
@@ -56,16 +51,6 @@ public class BudgetBuddyFrame extends JFrame {
         tablePanel.getTable().setSearchPanel(searchPanel);
         filtersPanel = new FiltersPanel(tablePanel.getTable());
         this.setJMenuBar(new MenuBar(tablePanel.getTable()));
-
-        // Test data - DA CANCELLARE
-        BalanceTableModel tableModel = tablePanel.getTable().getModel();
-        try {
-            Balance.setEntries(new LoadBackup(tableModel).loadFile(new File("examples/esempi.balancebuddy")));
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        tableModel.refresh();
-        // Test data - DA CANCELLARE
 
         createGUI();
     }
